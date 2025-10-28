@@ -1,32 +1,36 @@
 package finalProject;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Player{
 	
-	private int x;
-	private int y;
-	private int speed;
+	private int x = 100;
+	private int y = 100;
+	private int speed = 5;
+	private Image sprite;
+    private boolean spriteLoaded = false;
+
 	
 	public Player() {
-		
-		this.x = 100;
-		this.y = 100;
-		this.speed = 5;
-	}	
-	
-	public void moveUp() {
-		y =- speed;
+		try {
+			sprite = ImageIO.read(getClass().getResource("player_standing.png"));
+			spriteLoaded = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void moveDown() {
-		y =+ speed;
+	public void draw(Graphics g) {
+		if(spriteLoaded) {
+			g.drawImage(sprite, x, y, 40, 40, null);
+		}
 	}
 	
-	public void moveLeft() {
-		x =- speed;
-	}
-	
-	public void moveRigt() {
-		y =+ speed;
-	}
+	public void moveUp() {y -= speed;} 
+	public void moveDown() {y += speed;}
+	public void moveLeft() {x -= speed;}
+	public void moveRight() {x += speed;}
 	
 }
