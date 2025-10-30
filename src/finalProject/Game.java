@@ -1,30 +1,33 @@
 package finalProject;
 
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class Game extends JComponent implements KeyListener{
+public class Game extends JComponent{
 	
-	Player player = new Player();
+	private Player player = new Player();
+	Inputs inputs = new Inputs(player, this);
+
+	
+	public void show() {
+		JFrame frame = new JFrame();
+		frame.add(this);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(1920,1080);
+		frame.setVisible(true);
+		
+		this.setFocusable(true);
+		this.addKeyListener(inputs);
+	}
 	
 	public Game() {
-		this.setFocusable(true);
-		this.addKeyListener(this);
-	}
-
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		Game game = new Game();
-		frame.add(game);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800,400);
-		frame.setVisible(true);
 	}
 	
+	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -32,20 +35,4 @@ public class Game extends JComponent implements KeyListener{
 		player.draw(g);
 		
 	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		switch(e.getKeyCode())	 {
-		case KeyEvent.VK_UP -> player.moveUp();
-		case KeyEvent.VK_DOWN -> player.moveDown();
-		case KeyEvent.VK_LEFT -> player.moveLeft();
-		case KeyEvent.VK_RIGHT -> player.moveRight();
-		}
-		repaint();
-	}
-	
-	@Override
-	public void keyTyped(KeyEvent e) {}
-	@Override
-	public void keyReleased(KeyEvent e) {}
 }
