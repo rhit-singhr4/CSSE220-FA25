@@ -8,27 +8,25 @@
 //	
 //	private int x;
 //	private int speed = 2;
+//	private int count = 0;
 //	private boolean spriteLoaded;
 //	
 //	public Enemy() {
 //		
-//		try {
-//			
-//			spriteLoaded = true;
-//		} catch (IOException e) {
-//			e.printStackTrace();
+////		try {
+////			
+////			spriteLoaded = true;
+////		} catch (IOException e) {
+////			e.printStackTrace();
+////		}
+//	}
+//	
+//	public void move(int left, int right) {
+//		if (spiteLoaded = true) {
+//			x += speed;
+//			x -= speed;
 //		}
 //	}
 //	
-//	public void moveLeft() {
-//		x -= speed;
-//	}
-//	
-//	public void moveRight() {
-//		x += speed;
-//	}
-//	
-//	
-//
 //	
 //}
