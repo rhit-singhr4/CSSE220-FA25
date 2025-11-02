@@ -2,23 +2,25 @@ package finalProject;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class Game extends JComponent{
-	public static final Color BG = Color.CYAN;
+	
+//	public static final Color BG = Color.CYAN;
 	
 	private Player player = new Player();
-	Inputs inputs = new Inputs(player, this);
+	private Enemy enemy1 = new Enemy();
+	private Inputs inputs = new Inputs(player);
+	private Platforms platforms = new Platforms();
+	private JFrame frame = new JFrame();
 	private Timer timer;
 	
 	public void show() {
-		JFrame frame = new JFrame();
 		frame.add(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1920,1080);
+		frame.setSize(960,540);
 		frame.setVisible(true);
 		this.setFocusable(true);
 		this.addKeyListener(inputs);
@@ -29,6 +31,7 @@ public class Game extends JComponent{
         timer = new Timer(1000 / 60, e -> {
             player.update();
             inputs.update();
+            enemy1.update();
             repaint();
         });
         timer.start();
@@ -37,17 +40,14 @@ public class Game extends JComponent{
 	public Game() {
 	}
 	
-	
-
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
-		g.setColor(BG);
+//		g.setColor(BG);
 		g.fillRect(0,  0,  getWidth(), getHeight());
+		platforms.draw(g,getWidth(),getHeight());
+		enemy1.draw(g);
 		player.draw(g);
-	
-		
-		
 	}
 }

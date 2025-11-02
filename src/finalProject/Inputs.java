@@ -1,21 +1,15 @@
 package finalProject;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Inputs implements KeyListener{
 	
 	private Player player;
-	private Game game;
-	
 	private boolean leftPressed = false;
 	private boolean rightPressed = false;
 
-	
-	
-	public Inputs(Player player, Game game) {
+	public Inputs(Player player) {
 		this.player = player;
-		this.game = game;
 	}
 	
 	@Override
