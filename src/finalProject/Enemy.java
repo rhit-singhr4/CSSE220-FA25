@@ -1,5 +1,6 @@
 package finalProject;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -7,6 +8,9 @@ public class Enemy{
 	
 	private boolean facingLeft = false;
 	private static final int SPEED = 3;
+	private static final int SPRITE_WIDTH = 35;
+	private static final int SPRITE_HEIGHT = 35;
+
 	
 	private int x = 100;
 	private int y = 200;
@@ -16,17 +20,22 @@ public class Enemy{
 	
 	public Enemy() {
 		sprites.loadEnemy();
-		
-//		try {
-//			
-//			spriteLoaded = true;
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 	
 	public void update() {
-		moveLeft();
+		if(facingLeft) {
+			moveLeft();
+		} else {
+			moveRight();
+		}
+		
+		if(x <= 0) {
+			moveRight();
+		}
+		
+		if(x + SPRITE_WIDTH >= 960) {
+			moveLeft();
+		}
 		sprites.updateEnemy1Sprite(facingLeft);
 	}
 	
@@ -42,15 +51,11 @@ public class Enemy{
 	
 	public void draw(Graphics g) {
 		Image currentImage = sprites.enemyImage();
-		g.drawImage(currentImage, x, y, 64, 64, null);
+		g.drawImage(currentImage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
+		
+		g.setColor(Color.BLACK);
+		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
-	
-//	public void move(int left, int right) {
-//		if (spiteLoaded = true) {
-//			x += speed;
-//			x -= speed;
-//		}
-//	}
 	
 	
 }

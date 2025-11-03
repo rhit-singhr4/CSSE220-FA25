@@ -1,15 +1,12 @@
 package finalProject;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class Game extends JComponent{
-	
-//	public static final Color BG = Color.CYAN;
-	
+
 	private Player player = new Player();
 	private Enemy enemy1 = new Enemy();
 	private Inputs inputs = new Inputs(player);
@@ -31,6 +28,7 @@ public class Game extends JComponent{
         timer = new Timer(1000 / 60, e -> {
             player.update();
             inputs.update();
+            player.updatePlayerSprite();
             enemy1.update();
             repaint();
         });

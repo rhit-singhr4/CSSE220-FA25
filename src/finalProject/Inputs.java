@@ -39,5 +39,5 @@ public class Inputs implements KeyListener{
 		case KeyEvent.VK_LEFT -> leftPressed = false;
 		case KeyEvent.VK_RIGHT -> rightPressed = false;
 		}
-	}
+	}	
 }

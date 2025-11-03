@@ -11,6 +11,8 @@ public class SpriteManager {
 	
 	private Image enemy_l, enemy_r, currentEnemyImage;
 	
+	private Image ground;
+	
 	public SpriteManager() {
 		
 	}
@@ -66,5 +68,18 @@ public class SpriteManager {
 	
 	public Image enemyImage() {
 		return currentEnemyImage;
+	}
+	
+	public void loadPlatforms() {
+		try {
+			ground = ImageIO.read(getClass().getResource("dirt_block.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image groundImage() {
+		return ground;
+		
 	}
 }
