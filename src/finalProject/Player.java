@@ -41,7 +41,7 @@ public class Player{
 		
 		if(x <= 0) {
 			x += SPEED;
-		} else if(x + SPRITE_WIDTH >= 960) {
+		} else if(x + SPRITE_WIDTH >= 1920) {
 			x -= SPEED;
 		}
 		

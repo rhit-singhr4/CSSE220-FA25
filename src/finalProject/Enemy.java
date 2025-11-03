@@ -33,7 +33,7 @@ public class Enemy{
 			moveRight();
 		}
 		
-		if(x + SPRITE_WIDTH >= 960) {
+		if(x + SPRITE_WIDTH >= 1920) {
 			moveLeft();
 		}
 		sprites.updateEnemy1Sprite(facingLeft);
