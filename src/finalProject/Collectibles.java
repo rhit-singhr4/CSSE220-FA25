@@ -9,8 +9,8 @@ public class Collectibles {
 	
 	private SpriteManager sprites = new SpriteManager();
 	
-	private static final int SPRITE_WIDTH = 20;
-	private static final int SPRITE_HEIGHT = 20;
+	private static final int SPRITE_WIDTH = 40;
+	private static final int SPRITE_HEIGHT = 40;
 	
 	//private ArrayList<Collectibles> collectibles = new ArrayList<>();
 	private int x, y;
@@ -23,7 +23,8 @@ public class Collectibles {
 	}
 	
 	public void draw(Graphics g) {
-		g.drawImage(collectible, 200, 200,SPRITE_WIDTH, SPRITE_HEIGHT, null);
+		collectible = sprites.collectibleImage();
+		g.drawImage(collectible, 500, 500,SPRITE_WIDTH, SPRITE_HEIGHT, null);
 		g.setColor(Color.BLACK);
 		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
