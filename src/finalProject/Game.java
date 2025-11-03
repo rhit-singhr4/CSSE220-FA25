@@ -11,7 +11,7 @@ public class Game extends JComponent{
 	private Player player = new Player();
 	private Enemy enemy1 = new Enemy();
 	private Inputs inputs = new Inputs(player);
-	private Platforms platforms = new Platforms();
+	private PlatformManager platformManager = new PlatformManager();
 	private JFrame frame = new JFrame();
 	private Timer timer;
 	
@@ -37,11 +37,11 @@ public class Game extends JComponent{
     }
 	
 	public Game() {
-		platforms.addPlatforms(960,540,50);
-		platforms.addPlatforms(420,270,100);
-		platforms.addPlatforms(210,135,20);
-		platforms.addPlatforms(300,375,0);
-		platforms.addPlatforms(125,425,150);
+		platformManager.addPlatforms(960,540,5);
+		platformManager.addPlatforms(420,270,5);
+		platformManager.addPlatforms(210,135,5);
+		platformManager.addPlatforms(300,375,5);
+		platformManager.addPlatforms(125,425,5);
 	}
 	
 	@Override
@@ -50,7 +50,7 @@ public class Game extends JComponent{
 		super.paintComponent(g);
 //		g.setColor(BG);
 		g.fillRect(0,  0,  getWidth(), getHeight());
-		platforms.draw(g,getWidth(),getHeight());
+		platformManager.draw(g,getWidth(),getHeight());
 		enemy1.draw(g);
 		player.draw(g);
 		collectible.draw(g);
