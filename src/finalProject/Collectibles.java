@@ -16,9 +16,6 @@ public class Collectibles {
 	private int x, y;
 	private Image collectibleimage;
 	
-
-	
-	
 	public Collectibles(int x, int y, Image collectible) {
 		this.x = x;
 		this.y = y;
