@@ -13,6 +13,8 @@ public class SpriteManager {
 	
 	private Image ground;
 	
+	private Image gold_coin, silver_coin;
+	
 	public SpriteManager() {
 		
 	}
@@ -56,6 +58,19 @@ public class SpriteManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void loadCoins() {
+		try {
+			gold_coin = ImageIO.read(getClass().getResource("Gold_Coin.png"));
+			silver_coin = ImageIO.read(getClass().getResource("Silver_Coin.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image collectibleImage() {
+		return gold_coin;
 	}
 	
 	public void updateEnemy1Sprite(boolean facingLeft) {

@@ -7,6 +7,7 @@ import javax.swing.Timer;
  
 public class Game extends JComponent{
  
+	private Collectibles collectible = new Collectibles();
 	private Player player = new Player();
 	private Enemy enemy1 = new Enemy();
 	private Inputs inputs = new Inputs(player);
@@ -52,6 +53,7 @@ public class Game extends JComponent{
 		platforms.draw(g,getWidth(),getHeight());
 		enemy1.draw(g);
 		player.draw(g);
+		collectible.draw(g);
 	}
 }
  
