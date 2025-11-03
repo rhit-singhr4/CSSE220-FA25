@@ -19,6 +19,7 @@ public class Collectibles {
 
 	public Collectibles() {
 		sprites.loadCoins();
+		//hi
 		
 	}
 	
