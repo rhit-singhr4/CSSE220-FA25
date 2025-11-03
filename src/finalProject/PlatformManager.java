@@ -33,4 +33,8 @@ public class PlatformManager {
 			p.draw(g);
 		}
 	}
+	
+	public ArrayList<Platform> getPlatforms() {
+		return platforms;
+	}
 }

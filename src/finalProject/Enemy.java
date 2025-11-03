@@ -57,5 +57,9 @@ public class Enemy{
 		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
+	public void collide() {
+		
+	}
+	
 	
 }

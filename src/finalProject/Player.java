@@ -15,7 +15,6 @@ public class Player{
 	private static final int SPRITE_HEIGHT = 50;
 	
 	private double velY = 0;
-	private int ground = 300;
 	
     private boolean facingLeft = false;;
     private boolean isIdle = true;
@@ -48,6 +47,7 @@ public class Player{
 		velY += GRAVITY;
 		y += velY;
 		
+		int ground = SPRITE_HEIGHT;
 		if(y >= ground) {
 			y = ground;
 			velY = 0;
@@ -82,6 +82,26 @@ public class Player{
 	
 	public void attack() {
 		
+	}
+	
+	public void collide() {
+		
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public int getSpriteWidth() {
+		return SPRITE_WIDTH;
+	}
+	
+	public int getSpriteHeight() {
+		return SPRITE_HEIGHT;
 	}
 	
 }

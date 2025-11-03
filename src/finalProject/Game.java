@@ -18,7 +18,7 @@ public class Game extends JComponent{
 	public void show() {
 		frame.add(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1920,1080);
+		frame.setSize(960,540);
 		frame.setVisible(true);
 		this.setFocusable(true);
 		this.addKeyListener(inputs);

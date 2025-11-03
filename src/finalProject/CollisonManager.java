@@ -7,4 +7,9 @@ public class CollisonManager {
 	private Enemy enemy = new Enemy();
 	private Collectibles collectibles = new Collectibles();
 	
+	
+	public void playerToPlatformsCollision(Player player, PlatformManager platforms) {
+		for(Platform platform : platforms.getPlatforms()) {
+		}
+	}
 }
