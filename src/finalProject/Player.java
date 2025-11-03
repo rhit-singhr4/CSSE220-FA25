@@ -1,73 +1,83 @@
 package finalProject;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class Player{
 	
 	private int x = 100;
 	private int y = 300;
-	private int speed = 5;
-	private Image idle_r, idle_l, run_r, run_l;
-    private boolean spriteLoaded = false;
-    private boolean facingLeft;
-    private Image currentImage;
-    private boolean onGround = false;
-    private int jumpStrength;
-  
-    
+	
+	private static final int SPEED = 5;
+	private static final double GRAVITY = 0.5;
+	private static final int JUMP_POWER = -12;
+	private static final int SPRITE_WIDTH = 50;
+	private static final int SPRITE_HEIGHT = 50;
+	
+	private double velY = 0;
+	private int ground = 300;
+	
+    private boolean facingLeft = false;;
+    private boolean isIdle = true;
+	private boolean onGround = true;
+	
+	private SpriteManager sprites = new SpriteManager();
+
     
 	public Player() {
-		try {
-			idle_l = ImageIO.read(getClass().getResource("player_idle_left.png"));
-			run_l = ImageIO.read(getClass().getResource("player_run_left.png"));
-			idle_r = ImageIO.read(getClass().getResource("player_idle_right.png"));
-			run_r = ImageIO.read(getClass().getResource("player_run_right.png"));
-			currentImage = idle_r;
-			spriteLoaded = true;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		sprites.loadPlayer();
 	}
 	
 	public void draw(Graphics g) {
-		if(spriteLoaded) {
-			g.drawImage(currentImage, x, y, 50, 50, null);
-		}
+		Image currentImage = sprites.playerImage();
+		g.drawImage(currentImage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
+		
+		g.setColor(Color.BLACK);
+		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
 	public void update() {
+		isIdle = true;
 		
-		
-		if(facingLeft) {
-			currentImage = idle_l;
-		} else {
-			currentImage = idle_r;
+		if(x <= 0) {
+			x += SPEED;
+		} else if(x + SPRITE_WIDTH >= 960) {
+			x -= SPEED;
 		}
+		
+		velY += GRAVITY;
+		y += velY;
+		
+		if(y >= ground) {
+			y = ground;
+			velY = 0;
+			onGround = true;
+		} else {
+			onGround = false;
+		}
+	}
+	
+	public void updatePlayerSprite() {
+		sprites.updatePlayerSprite(facingLeft, isIdle);
 	}
 	
 	public void jump() {
-		y -= jumpStrength;
+		if(onGround) {
+			velY = JUMP_POWER;
+			onGround = false;
+		}
 	}
-
 	
 	public void moveLeft() {
-		x -= speed; 
-		currentImage = run_l;
+		x -= SPEED; 
+		isIdle = false;
 		facingLeft = true;
-		if(!onGround) {
-			y -= 0;
-		}
 	}
 	
 	public void moveRight() {
-		x += speed; 
-		currentImage = run_r;
+		x += SPEED; 
+		isIdle = false;
 		facingLeft = false;
-		if(!onGround) {
-			y -= 0;
-		}
 	}
 	
 	public void attack() {
