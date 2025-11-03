@@ -10,7 +10,7 @@ public class Platforms {
 	private static final int SPRITE_WIDTH = 35;
 	private static final int SPRITE_HEIGHT = 35;
 	private ArrayList<Platforms> platforms = new ArrayList<>();
-	private int x, y;
+	private int x, y, length;
 	
 	private SpriteManager sprites = new SpriteManager();
 	
@@ -18,14 +18,15 @@ public class Platforms {
 		sprites.loadPlatforms();
 	}
 	
-	public Platforms(int x, int y, Image ground) {
+	public Platforms(int x, int y, int length, Image ground) {
 		this.x = x;
 		this.y = y;
+		this.length = length;
 		this.ground = ground;
 	}
 	
-	public void addPlatforms() {
-		platforms.add(new Platforms(x,y,sprites.groundImage()));
+	public void addPlatforms(int x, int y, int length) {
+		platforms.add(new Platforms(x, y, length, sprites.groundImage()));
 	}
 	
 	
@@ -37,7 +38,7 @@ public class Platforms {
 		}
 		
 		for( Platforms p: platforms) {
-			g.drawImage(p.ground, p.x, p.y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
+			g.drawImage(p.ground, p.x, p.y, SPRITE_WIDTH + p.length, SPRITE_HEIGHT, null);
 		}
 	}
 }

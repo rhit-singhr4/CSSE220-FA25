@@ -36,11 +36,11 @@ public class Game extends JComponent{
     }
 	
 	public Game() {
-		//platforms.addPlatforms(960,540);
-		platforms.addPlatforms();
-		platforms.addPlatforms();
-		platforms.addPlatforms();
-		platforms.addPlatforms();
+		platforms.addPlatforms(960,540,50);
+		platforms.addPlatforms(420,270,100);
+		platforms.addPlatforms(210,135,20);
+		platforms.addPlatforms(300,375,0);
+		platforms.addPlatforms(125,425,150);
 	}
 	
 	@Override
