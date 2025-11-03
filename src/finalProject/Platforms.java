@@ -39,7 +39,7 @@ public class Platforms {
 		
 		for( Platforms p: platforms) {
 			for (int j = 0; j < 5; j++) {
-				g.drawImage(p.ground, p.x*j, p.y, SPRITE_WIDTH + p.length, SPRITE_HEIGHT, null);
+	            g.drawImage(p.ground, p.x + (SPRITE_WIDTH * j), p.y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 			}
 		}
 	}
