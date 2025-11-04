@@ -1,5 +1,12 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The platform class sets up the variables and information of the platforms
+ * This class creates specificlly one small tile platform. Then in the manager it multiples these tiles and 
+ * creates the larger platforms and multiple of the platforms.
+ */
+
 import java.awt.Graphics;
 import java.awt.Image;
 

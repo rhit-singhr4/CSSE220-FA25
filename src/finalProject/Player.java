@@ -1,12 +1,22 @@
 package finalProject;
+
+
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The player class sets up the variables for the player including start position, speed, and jump that move the player
+ * This class also creates the player calling in the sprite and drawing in the sprite to be shown. 
+ * This class deals with the gravity component and switches between the different versions we have on the sprite 
+ * based on the action the player is doing being running, jumping, or falling
+ */
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
 public class Player{
 	
-	private int x = 100;
-	private int y = 300;
+	private int x = 50;
+	private int y = 840;
 	
 	private static final int SPEED = 5;
 	private static final double GRAVITY = 0.5;

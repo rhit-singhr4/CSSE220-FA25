@@ -1,4 +1,11 @@
 package finalProject;
+
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The inputs class deals with all the controls for the player. This is where all the keys are set up.
+ * where holding the right arrow moves right, holding the left arrow moves left, and pressing the up arrow jumps
+ */
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
