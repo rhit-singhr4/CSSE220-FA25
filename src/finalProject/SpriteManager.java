@@ -21,7 +21,7 @@ public class SpriteManager {
 	
 	private Image ground;
 	
-	private Image gold_coin;
+	private Image gold_coin, silver_coin;
 	
 	public SpriteManager() {
 		
@@ -68,17 +68,28 @@ public class SpriteManager {
 		}
 	}
 	
-	public void loadCoins() {
+	public void loadGoldCoins() {
 		try {
 			gold_coin = ImageIO.read(getClass().getResource("Gold_Coin.png"));
-//			silver_coin = ImageIO.read(getClass().getResource("Silver_Coin.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Image collectibleImage() {
+	public void loadSilverCoins() {
+		try {
+			silver_coin = ImageIO.read(getClass().getResource("Silver_Coin.png"));
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	}
+	
+	public Image collectibleGoldImage() {
 		return gold_coin;
+	}
+
+	public Image collectibleSilverImage() {
+		return silver_coin;
 	}
 	
 	public void updateEnemy1Sprite(boolean facingLeft) {

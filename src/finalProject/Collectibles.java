@@ -1,7 +1,7 @@
 package finalProject;
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The collectibles class creates the first collectible by setting the sprites height and width, then setting
  * its location. Then is draws it to the game to be displayed.
  */
