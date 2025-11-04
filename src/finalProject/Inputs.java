@@ -24,10 +24,10 @@ public class Inputs implements KeyListener{
 	public void update() {
 		if(leftPressed) {
 			player.moveLeft();
-		}
-		
-		if(rightPressed) {
+		} else if(rightPressed) {
 			player.moveRight();
+		} else {
+			player.setIdle(true);
 		}
 	}
 	

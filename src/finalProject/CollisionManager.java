@@ -2,10 +2,6 @@ package finalProject;
 
 public class CollisionManager {
 	
-	private Player player = new Player();
-	private PlatformManager platformManager = new PlatformManager();
-	private Enemy enemy = new Enemy();
-	
 	public void playerToPlatformsCollision(Player player, PlatformManager platforms) {
 	    for(Platform platform : platforms.getPlatforms()) {
 	        int playerX = player.getX();
@@ -18,13 +14,11 @@ public class CollisionManager {
 	        int platformWidth = platform.getWidth();
 	        int platformHeight = platform.getHeight();
 	        
-	        // Check if player is overlapping platform horizontally and vertically
 	        if(playerX + playerWidth > platformX &&
 	                playerX < platformX + platformWidth &&
 	                playerY + playerHeight > platformY &&
 	                playerY < platformY + platformHeight) {
 	        
-	            // Player is falling onto platform from above
 	            if(player.getVelyY() > 0) {
 	                int overlap = (playerY + playerHeight) - platformY;
 	                
@@ -36,12 +30,10 @@ public class CollisionManager {
 	            }
 	        }
 	        
-	        // ADDED: Check if player is standing on platform (not falling, just resting on top)
-	        // This allows jumping while standing still on a platform
 	        if(playerX + playerWidth > platformX &&
 	                playerX < platformX + platformWidth &&
 	                playerY + playerHeight >= platformY &&
-	                playerY + playerHeight <= platformY + 5) {  // Within 5 pixels of platform top
+	                playerY + playerHeight <= platformY + 5) {
 	            player.setOnGround(true);
 	        }
 	    }

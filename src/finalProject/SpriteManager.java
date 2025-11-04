@@ -13,7 +13,7 @@ public class SpriteManager {
 	
 	private Image ground;
 	
-	private Image gold_coin, silver_coin;
+	private Image gold_coin;
 	
 	public SpriteManager() {
 		
@@ -63,7 +63,7 @@ public class SpriteManager {
 	public void loadCoins() {
 		try {
 			gold_coin = ImageIO.read(getClass().getResource("Gold_Coin.png"));
-			silver_coin = ImageIO.read(getClass().getResource("Silver_Coin.png"));
+//			silver_coin = ImageIO.read(getClass().getResource("Silver_Coin.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

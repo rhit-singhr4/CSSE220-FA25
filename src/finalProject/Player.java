@@ -36,7 +36,6 @@ public class Player{
 	}
 	
 	public void update(int screenHeight) {
-		isIdle = true;
 		onGround = false;
 		
 		if(x <= 0) {
@@ -105,6 +104,10 @@ public class Player{
 	
 	public void setVelY(double velY) {
 		this.velY = velY;
+	}
+	
+	public void setIdle(boolean idle) {
+		this.isIdle = idle;
 	}
 	
 	public void setY(int y) {
