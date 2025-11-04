@@ -26,12 +26,12 @@ public class HUD {
 	public void draw(Graphics g) {
 		//Score
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Block", Font.BOLD, 10));
-		g.drawString("Score: " + score, 50,50);
+		g.setFont(new Font("Arial", Font.BOLD, 25));
+		g.drawString("Score: " + score, 10,50);
 		
 		//Lives
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
-		g.drawString("Lives: " + lives, 50, 75);
+		g.setFont(new Font("Arial", Font.BOLD, 25));
+		g.drawString("Lives: " + lives, 10, 75);
 	}
 }
