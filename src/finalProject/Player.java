@@ -44,12 +44,12 @@ public class Player{
 		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
-	public void update(int screenHeight) {
+	public void update(int screenHeight, int screenWidth) {
 		onGround = false;
 		
 		if(x <= 0) {
 			x += SPEED;
-		} else if(x + SPRITE_WIDTH >= 1920) {
+		} else if(x + SPRITE_WIDTH >= screenWidth) {
 			x -= SPEED;
 		}
 		

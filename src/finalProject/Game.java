@@ -36,7 +36,7 @@ public class Game extends JComponent{
     private void startGameLoop() {
         timer = new Timer(1000 / 60, e -> {
         	inputs.update();
-            player.update(getHeight());
+            player.update(getHeight(), getWidth());
             collisonManager.playerToPlatformsCollision(player, platformManager);
             player.updatePlayerSprite();
             enemy1.update();
