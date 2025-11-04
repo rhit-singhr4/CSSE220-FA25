@@ -59,6 +59,7 @@ public class Game extends JComponent{
 		collectiblesManager.addCollectibles(1112, 610);
 		collectiblesManager.addCollectibles(780,360);
 		collectiblesManager.addCollectibles(125,620);
+		collectiblesManager.addCollectibles(1350,460);
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
