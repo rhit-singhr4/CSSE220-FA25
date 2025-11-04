@@ -45,4 +45,8 @@ public class CollisionManager {
 	        }
 	    }
 	}
+	
+	public void playerToEnemyCollision(Player player, EnemyManager enemies) {
+		
+	}
 }
