@@ -22,7 +22,7 @@ public class Collectibles {
 	public Collectibles(int x, int y, Image collectible) {
 		this.x = x;
 		this.y = y;
-		this.collectibleimage = collectibleimage;
+		this.collectibleimage = collectible;
 	}
 	
 	
