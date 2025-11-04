@@ -18,7 +18,7 @@ public class Game extends JComponent{
 	public void show() {
 		frame.add(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(960,540);
+		frame.setSize(1480,1080);
 		frame.setVisible(true);
 		this.setFocusable(true);
 		this.addKeyListener(inputs);
@@ -37,11 +37,12 @@ public class Game extends JComponent{
     }
 	
 	public Game() {
-		platformManager.addPlatforms(960,540,5);
-		platformManager.addPlatforms(420,270,5);
-		platformManager.addPlatforms(210,135,5);
-		platformManager.addPlatforms(300,375,5);
-		platformManager.addPlatforms(125,425,5);
+		platformManager.addPlatforms(800,775,5);
+		platformManager.addPlatforms(1100,650,2);
+		platformManager.addPlatforms(900,550,3);
+		platformManager.addPlatforms(350,550,10);
+		platformManager.addPlatforms(125,660,1);
+		platformManager.addPlatforms(1300,500,3);
 	}
 	
 	@Override
