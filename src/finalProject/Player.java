@@ -22,7 +22,6 @@ public class Player{
 	
 	private SpriteManager sprites = new SpriteManager();
 
-    
 	public Player() {
 		sprites.loadPlayer();
 	}
@@ -116,6 +115,11 @@ public class Player{
 	
 	public void setOnGround(boolean onGround) {
 		this.onGround = onGround;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+		
 	}
 	
 }

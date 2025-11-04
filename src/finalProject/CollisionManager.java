@@ -29,7 +29,6 @@ public class CollisionManager {
 	                }
 	            }
 	        }
-	        
 	        if(playerX + playerWidth > platformX &&
 	                playerX < platformX + platformWidth &&
 	                playerY + playerHeight >= platformY &&

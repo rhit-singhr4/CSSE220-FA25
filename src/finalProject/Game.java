@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class Game extends JComponent{
- 
+	
 	private CollectiblesManager collectiblesManager = new CollectiblesManager();
 	private CollisionManager collisonManager = new CollisionManager();
 	private Player player = new Player();
@@ -46,12 +46,9 @@ public class Game extends JComponent{
 		platformManager.addPlatforms(125,660,1);
 		platformManager.addPlatforms(1300,500,3);
 	}
-	
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
 		super.paintComponent(g);
-//		g.setColor(BG);
 		g.fillRect(0,  0,  getWidth(), getHeight());
 		platformManager.draw(g,getWidth(),getHeight());
 		enemy1.draw(g);

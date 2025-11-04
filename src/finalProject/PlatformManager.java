@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class PlatformManager {
 	
-//	private Platforms plateform = new Platforms();
-
 	private ArrayList<Platform> platforms = new ArrayList<>();
 	private SpriteManager sprite = new SpriteManager();
 	private static final int SPRITE_WIDTH = 35;
