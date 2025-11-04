@@ -1,5 +1,13 @@
 package finalProject;
 
+
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The SpriteManager class adds in all of our sprites used in the game 
+ * This class deals with loading in our sprites we created and updating the version of a sprite we want based on
+ * the controls being used
+ */
+
 import java.awt.Image;
 import java.io.IOException;
 

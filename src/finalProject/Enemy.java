@@ -1,5 +1,13 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The Enemy class sets up the speed variable for the enemy determining what direction the enemy should move
+ * This class creates an auto moving enemy that starts moving the moment it is loaded in the game
+ * The enemy patrols by moving one direction constantly then hits the border of the screen than flips
+ * direction and begins to move the other direction 
+ */
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;

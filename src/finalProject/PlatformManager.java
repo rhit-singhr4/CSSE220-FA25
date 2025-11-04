@@ -1,5 +1,16 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The platformManager class creates an arraylist of platforms to make multiple platforms
+ * and a large platform to represent the ground. This class is what makes multiple platforms from the one platform created.
+ * The platforms have 3 inputs being the x position the y position and the tilewidth.
+ * The different x and y positions are to change the location of where a platform is called
+ * and these changes and calls are made in the game class. The tilewidth is to make the platform images clearer 
+ * instead of stretching the image to make larger platforms the tilewidth creates multiple and adds them together
+ * creating one large smooth looking platform. Then they get drawn on being displayed in the game
+ */
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
