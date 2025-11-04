@@ -7,8 +7,6 @@ import java.awt.Image;
 
 public class Collectibles {
 	
-	
-	
 	private static final int SPRITE_WIDTH = 40;
 	private static final int SPRITE_HEIGHT = 40;
 	

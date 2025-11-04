@@ -4,10 +4,11 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
- 
+
 public class Game extends JComponent{
  
 	private CollectiblesManager collectiblesManager = new CollectiblesManager();
+	private CollisionManager collisonManager = new CollisionManager();
 	private Player player = new Player();
 	private Enemy enemy1 = new Enemy();
 	private Inputs inputs = new Inputs(player);
@@ -27,8 +28,9 @@ public class Game extends JComponent{
 	
     private void startGameLoop() {
         timer = new Timer(1000 / 60, e -> {
-            player.update();
-            inputs.update();
+        	inputs.update();
+            player.update(getHeight());
+            collisonManager.playerToPlatformsCollision(player, platformManager);
             player.updatePlayerSprite();
             enemy1.update();
             repaint();
@@ -37,7 +39,7 @@ public class Game extends JComponent{
     }
 	
 	public Game() {
-		platformManager.addPlatforms(800,775,5);
+		platformManager.addPlatforms(800,775,20);
 		platformManager.addPlatforms(1100,650,2);
 		platformManager.addPlatforms(900,550,3);
 		platformManager.addPlatforms(350,550,10);

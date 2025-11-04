@@ -35,8 +35,9 @@ public class Player{
 		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
-	public void update() {
+	public void update(int screenHeight) {
 		isIdle = true;
+		onGround = false;
 		
 		if(x <= 0) {
 			x += SPEED;
@@ -47,13 +48,11 @@ public class Player{
 		velY += GRAVITY;
 		y += velY;
 		
-		int ground = SPRITE_HEIGHT;
+		int ground = screenHeight - SPRITE_HEIGHT - 35;
 		if(y >= ground) {
 			y = ground;
 			velY = 0;
 			onGround = true;
-		} else {
-			onGround = false;
 		}
 	}
 	
@@ -84,10 +83,6 @@ public class Player{
 		
 	}
 	
-	public void collide() {
-		
-	}
-	
 	public int getX() {
 		return x;
 	}
@@ -96,12 +91,28 @@ public class Player{
 		return y;
 	}
 	
+	public double getVelyY() {
+		return velY;
+	}
+	
 	public int getSpriteWidth() {
 		return SPRITE_WIDTH;
 	}
 	
 	public int getSpriteHeight() {
 		return SPRITE_HEIGHT;
+	}
+	
+	public void setVelY(double velY) {
+		this.velY = velY;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public void setOnGround(boolean onGround) {
+		this.onGround = onGround;
 	}
 	
 }

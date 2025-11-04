@@ -25,4 +25,20 @@ public class Platform {
 			g.drawImage(ground, x + (spriteWidth*i), y, spriteWidth, spriteHeight,null);
 		}
 	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public int getWidth() {
+		return spriteWidth * tileWidth;
+	}
+	
+	public int getHeight() {
+		return spriteHeight;
+	}
 }
