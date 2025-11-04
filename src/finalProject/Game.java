@@ -20,6 +20,7 @@ public class Game extends JComponent{
 	private Enemy enemy1 = new Enemy();
 	private Inputs inputs = new Inputs(player);
 	private PlatformManager platformManager = new PlatformManager();
+	private HUD hud = new HUD();
 	private JFrame frame = new JFrame();
 	private Timer timer;
 	
@@ -63,6 +64,7 @@ public class Game extends JComponent{
 		enemy1.draw(g);
 		player.draw(g);
 		collectiblesManager.draw(g, getWidth(), getHeight());
+		hud.draw(g);
 	}
 }
  
