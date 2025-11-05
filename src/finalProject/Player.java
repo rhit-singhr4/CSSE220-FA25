@@ -40,16 +40,16 @@ public class Player{
 		Image currentImage = sprites.playerImage();
 		g.drawImage(currentImage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 		
-		g.setColor(Color.BLACK);
-		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
+//		g.setColor(Color.BLACK);
+//		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
 	public void update(int screenHeight, int screenWidth) {
 		onGround = false;
 		
-		if(x <= 0) {
+		if(x <= -10) {
 			x += SPEED;
-		} else if(x + SPRITE_WIDTH >= screenWidth) {
+		} else if(x + SPRITE_WIDTH - 10 >= screenWidth) {
 			x -= SPEED;
 		}
 		
@@ -129,7 +129,6 @@ public class Player{
 
 	public void setX(int x) {
 		this.x = x;
-		
 	}
 	
 }

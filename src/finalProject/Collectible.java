@@ -9,26 +9,42 @@ package finalProject;
 import java.awt.Graphics;
 import java.awt.Image;
 
+public class Collectible {
 
-public class Collectibles {
-	
 	private static final int SPRITE_WIDTH = 40;
 	private static final int SPRITE_HEIGHT = 40;
-	
-	
+
 	private int x, y;
 	private Image collectibleimage;
-	
-	public Collectibles(int x, int y, Image collectible) {
+
+	public Collectible(int x, int y, Image collectible) {
 		this.x = x;
 		this.y = y;
 		this.collectibleimage = collectible;
 	}
-	
-	
-	public void draw(Graphics g) {
-		g.drawImage(collectibleimage, x, y,SPRITE_WIDTH, SPRITE_HEIGHT, null);
-		}
-}
 
+	public void draw(Graphics g) {
+		g.drawImage(collectibleimage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getSpriteWidth() {
+		return SPRITE_WIDTH;
+	}
+
+	public int getSpriteHeight() {
+		return SPRITE_HEIGHT;
+	}
+
+	public int getY() {
+		return y;
+	}
 	
+}

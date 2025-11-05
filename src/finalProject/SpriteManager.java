@@ -57,17 +57,7 @@ public class SpriteManager {
 	public Image playerImage() {
 		return currentPlayerImage;
 	}
-	
-	public void loadEnemy() {
-		try {
-			enemy_l = ImageIO.read(getClass().getResource("enemy1_left.png"));
-			enemy_r = ImageIO.read(getClass().getResource("enemy1_right.png"));
-			currentEnemyImage = enemy_l;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	public void loadGoldCoins() {
 		try {
 			gold_coin = ImageIO.read(getClass().getResource("Gold_Coin.png"));
@@ -100,7 +90,17 @@ public class SpriteManager {
 		}
 	}
 	
-	public Image enemyImage() {
+	public void loadEnemy1() {
+		try {
+			enemy_l = ImageIO.read(getClass().getResource("enemy1_left.png"));
+			enemy_r = ImageIO.read(getClass().getResource("enemy1_right.png"));
+			currentEnemyImage = enemy_l;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image enemy1Image() {
 		return currentEnemyImage;
 	}
 	

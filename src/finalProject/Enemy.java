@@ -15,59 +15,33 @@ import java.awt.Image;
 public class Enemy {
 
 	private Image enemy;
-	private boolean facingLeft = false;
-	private static final int SPEED = 3;
-	private static final int SPRITE_WIDTH = 35;
-	private static final int SPRITE_HEIGHT = 35;
-
 	private int x;
 	private int y;
-
-	private SpriteManager sprites = new SpriteManager();
-	public Enemy() {
-		this.x = 100;
-		this.y = 200;
+	private Platform platform;;
+	private boolean facingLeft = false;
+	private static final int SPRITE_WIDTH = 35;
+	private static final int SPRITE_HEIGHT = 35;
+	
+	public Enemy(int x, int y, Image enemy, Platform platform) {
+		this.x = x;
+		this.y = y;
+		this.platform = platform;
 		this.enemy = enemy;
+		this.facingLeft = false;
 	}
 	
-	public void update() {
-		if (facingLeft) {
-			moveLeft();
-		} else {
-			moveRight();
-		}
-
-		if (x <= 0) {
-			moveRight();
-		} else if (x + SPRITE_WIDTH >= 1460) {
-			moveLeft();
-		}
-		
-		sprites.updateEnemy1Sprite(facingLeft);
-	}
-
-	public void moveLeft() {
-		x -= SPEED;
-		facingLeft = true;
-	}
-
-	public void moveRight() {
-		x += SPEED;
-		facingLeft = false;
-	}
-
 	public void draw(Graphics g) {
 		g.drawImage(enemy, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 
-		g.setColor(Color.BLACK);
-		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
+//		g.setColor(Color.BLACK);
+//		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 
-	public static int getSpriteWidth() {
+	public int getSpriteWidth() {
 		return SPRITE_WIDTH;
 	}
 
-	public static int getSpriteHeight() {
+	public int getSpriteHeight() {
 		return SPRITE_HEIGHT;
 	}
 
@@ -79,8 +53,29 @@ public class Enemy {
 		return y;
 	}
 
+	public Platform getPlatfrom() {
+		return platform;
+	}
+	
 	public boolean getIsFacingLeft() {
 		return facingLeft;
 	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setFacingLeft(boolean facingLeft) {
+		this.facingLeft = facingLeft;
+	}
+	
+	public void setEnemyImage(Image enemy) {
+		this.enemy = enemy;
+	}
+	
 
 }

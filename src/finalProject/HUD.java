@@ -9,13 +9,17 @@ public class HUD {
 	private int score = 0;
 	private int lives = 3;
 	
-	public void HUD() {
-		
+	public int getScore() {
+		return score;
 	}
 	
 	public void setScore(int score) {
 		this.score = score;
 		//repaint();
+	}
+	
+	public int getLives() {
+		return lives;
 	}
 	
 	public void setLives(int lives) {
