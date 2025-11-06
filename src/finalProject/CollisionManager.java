@@ -9,7 +9,7 @@ package finalProject;
  */
 
 public class CollisionManager {
-
+	
 	private HUD hud;
 	private Player player;
 	private PlatformManager platforms;
