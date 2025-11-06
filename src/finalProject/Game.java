@@ -1,17 +1,17 @@
 package finalProject;
  
 /*
- * @Authors: Raj, Andrew, and Braylo
- * The game class sets up the main frame that calls all the componenets together 
- * adding everything to the frame and displaying
- * the player, enemy, platforms, and collectibles all on one frame
- */
-
+* @Authors: Raj, Andrew, and Braylo
+* The game class sets up the main frame that calls all the componenets together
+* adding everything to the frame and displaying
+* the player, enemy, platforms, and collectibles all on one frame
+*/
+ 
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
-
+ 
 public class Game extends JComponent{
 	
 	private CollectiblesManager collectibles = new CollectiblesManager();
@@ -43,7 +43,7 @@ public class Game extends JComponent{
             collisionManager.playerToPlatformsCollision();
             collisionManager.playerToEnemyCollision();
             collisionManager.playerToCollectibles();
-
+ 
             player.updatePlayerSprite();
             enemies.update();
             repaint();
@@ -72,5 +72,3 @@ public class Game extends JComponent{
 		hud.draw(g);
 	}
 }
- 
- 
