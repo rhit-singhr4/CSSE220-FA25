@@ -70,6 +70,7 @@ public class Player{
 			onGround = false;
 		}
 	}
+	//testing
 	
 	public void moveLeft() {
 		x -= SPEED; 
@@ -82,11 +83,11 @@ public class Player{
 		isIdle = false;
 		facingLeft = false;
 	}
-	
-	public void attack() {
-		
+	public void respawnPlayer() {
+		this.x = 540;
+		this.y = 0;
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -115,6 +116,10 @@ public class Player{
 		this.isIdle = idle;
 	}
 	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
 	public void setY(int y) {
 		this.y = y;
 	}
@@ -122,9 +127,4 @@ public class Player{
 	public void setOnGround(boolean onGround) {
 		this.onGround = onGround;
 	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-	
 }

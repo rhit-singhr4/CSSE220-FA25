@@ -15,12 +15,10 @@ public class Collectible {
 	private static final int SPRITE_HEIGHT = 40;
 	private int x, y;
 	private Image collectibleimage;
-	private Platform platform;
 
 	public Collectible(int x, int y, Image collectible, Platform platform) {
 		this.x = x;
 		this.y = y;
-		this.platform = platform;
 		this.collectibleimage = collectible;
 	}
 

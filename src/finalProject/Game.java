@@ -16,13 +16,13 @@ public class Game extends JComponent{
 	
 	private CollectiblesManager collectibles = new CollectiblesManager();
 	private HUD hud = new HUD();
-	private CollisionManager collisionManager = new CollisionManager(hud);
 	private Player player = new Player();
 	private EnemyManager enemies = new EnemyManager();
 	private Inputs inputs = new Inputs(player);
 	private PlatformManager platforms = new PlatformManager();
 	private JFrame frame = new JFrame();
 	private Timer timer;
+	private CollisionManager collisionManager = new CollisionManager(hud, player, platforms, enemies, collectibles);
 	
 	public void show() {
 		frame.add(this);
@@ -38,9 +38,9 @@ public class Game extends JComponent{
         timer = new Timer(1000 / 60, e -> {
         	inputs.update();
             player.update(getHeight(), getWidth());
-            collisionManager.playerToPlatformsCollision(player, platforms);
-            collisionManager.playerToEnemyCollision(player, enemies);
-            collisionManager.playerToCollectibles(player, collectibles);
+            collisionManager.playerToPlatformsCollision();
+            collisionManager.playerToEnemyCollision();
+            collisionManager.playerToCollectibles();
 
             player.updatePlayerSprite();
             enemies.update();

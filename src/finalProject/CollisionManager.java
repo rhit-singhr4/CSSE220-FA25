@@ -11,16 +11,25 @@ package finalProject;
 public class CollisionManager {
 
 	private HUD hud;
+	private Player player;
+	private PlatformManager platforms;
+	private EnemyManager enemies;
+	private CollectiblesManager collectibles;
 
-	public CollisionManager(HUD hud) {
+	public CollisionManager(HUD hud, Player player, PlatformManager platforms, EnemyManager enemies, CollectiblesManager collectibles) {
 		this.hud = hud;
+		this.player = player;
+		this.platforms = platforms;
+		this.enemies = enemies;
+		this.collectibles = collectibles;
 	}
+	
 
 	private boolean checkCollision(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2) {
 		return x1 + width1 > x2 && x1 < x2 + width2 && y1 + height1 > y2 && y1 < y2 + height2;
 	}
 
-	public void playerToPlatformsCollision(Player player, PlatformManager platforms) {
+	public void playerToPlatformsCollision() {
 		for (Platform platform : platforms.getPlatforms()) {
 			if (checkCollision(player.getX(), player.getY(), player.getSpriteWidth(), player.getSpriteHeight(),
 					platform.getX(), platform.getY(), platform.getWidth(), platform.getHeight()))
@@ -44,18 +53,20 @@ public class CollisionManager {
 		}
 	}
 
-	public void playerToEnemyCollision(Player player, EnemyManager enemies) {
+	public void playerToEnemyCollision() {
 		int shrink = 10;
 		for (Enemy enemy : enemies.getEnemies()) {
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
 					enemy.getSpriteWidth() - shrink, enemy.getSpriteHeight() - shrink)) {
 				hud.setLives(hud.getLives() - 1);
+				player.respawnPlayer();
+				break;
 			}
 		}
 	}
 
-	public void playerToCollectibles(Player player, CollectiblesManager collectibles) {
+	public void playerToCollectibles() {
 		int shrink = 10;
 		for (int i = collectibles.getCollectibles().size() - 1; i >= 0; i--) {
 			Collectible collectible = collectibles.getCollectibles().get(i);

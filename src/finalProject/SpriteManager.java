@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 
 public class SpriteManager {
 	
-	private Image idle_r, idle_l, run_r, run_l, currentPlayerImage;
+	private Image idle_r, idle_l, run_r, run_l, rock ,currentPlayerImage;
 	
 	private Image enemy_l, enemy_r, currentEnemyImage;
 	
