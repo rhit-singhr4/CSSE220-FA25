@@ -25,7 +25,7 @@ public class CollectiblesManager {
 	}
 
 	public void addCollectibles(Platform platform) {
-		int spacing = 150;
+		int spacing = 50;
 		int numOfCoinsPerPlatform = (platform.getWidth() - spacing) / spacing;
 		for(int i = 0; i < numOfCoinsPerPlatform; i++) {
 			int collectibleX = platform.getX() + 5;
