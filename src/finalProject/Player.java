@@ -70,7 +70,7 @@ public class Player{
 			onGround = false;
 		}
 	}
-	//testing
+	//tes
 	
 	public void moveLeft() {
 		x -= SPEED; 
