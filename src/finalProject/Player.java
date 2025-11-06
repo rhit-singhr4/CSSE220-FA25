@@ -84,8 +84,8 @@ public class Player{
 		facingLeft = false;
 	}
 	public void respawnPlayer() {
-		this.x = 540;
-		this.y = 0;
+		this.x = 50;
+		this.y = 840;
 	}
 
 	public int getX() {
