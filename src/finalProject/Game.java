@@ -53,7 +53,7 @@ public class Game extends JComponent{
 	
 	public Game() {
 		
-		levels.level1();
+		levels.level2();
 		
 		for(Platform platform: platforms.getPlatforms()) {
 			enemies.addEnemies(platform);
