@@ -20,7 +20,9 @@ public class Game extends JComponent{
 	private EnemyManager enemies = new EnemyManager();
 	private Inputs inputs = new Inputs(player);
 	private PlatformManager platforms = new PlatformManager();
+	private LevelManager levels = new LevelManager(platforms);
 	private JFrame frame = new JFrame();
+	private JFrame frame2 = new JFrame();
 	private Timer timer;
 	private CollisionManager collisionManager = new CollisionManager(hud, player, platforms, enemies, collectibles);
 	
@@ -50,13 +52,8 @@ public class Game extends JComponent{
     }
 	
 	public Game() {
-		platforms.addPlatforms(800,775,20);
-		platforms.addPlatforms(1100,650,2);
-		platforms.addPlatforms(900,550,3);
-		platforms.addPlatforms(350,550,10);
-		platforms.addPlatforms(125,660,1);
-		platforms.addPlatforms(1300,500,3);
 		
+		levels.level1();
 		
 		for(Platform platform: platforms.getPlatforms()) {
 			enemies.addEnemies(platform);
