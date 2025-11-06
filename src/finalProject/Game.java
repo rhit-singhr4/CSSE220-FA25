@@ -48,6 +48,8 @@ public class Game extends JComponent{
         });
         timer.start();
     }
+    
+    //hi
 	
 	public Game() {
 		platforms.addPlatforms(800,775,20);
