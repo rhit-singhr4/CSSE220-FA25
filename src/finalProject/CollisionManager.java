@@ -57,11 +57,13 @@ public class CollisionManager {
 
 	public void playerToCollectibles(Player player, CollectiblesManager collectibles) {
 		int shrink = 10;
-		for (Collectible collectible : collectibles.getCollectibles()) {
+		for (int i = collectibles.getCollectibles().size() - 1; i >= 0; i--) {
+			Collectible collectible = collectibles.getCollectibles().get(i);
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, collectible.getX() + shrink, collectible.getY() + shrink,
 					collectible.getSpriteWidth() - shrink, collectible.getSpriteHeight() - shrink)) {
 				hud.setScore(hud.getScore() + 1);
+				collectibles.getCollectibles().remove(i);
 			}
 
 		}

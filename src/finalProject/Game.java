@@ -57,14 +57,10 @@ public class Game extends JComponent{
 		platforms.addPlatforms(125,660,1);
 		platforms.addPlatforms(1300,500,3);
 		
-		collectibles.addCollectibles(800, 735);
-		collectibles.addCollectibles(1400,735);
-		collectibles.addCollectibles(1112, 610);
-		collectibles.addCollectibles(780,360);
-		collectibles.addCollectibles(125,620);
 		
 		for(Platform platform: platforms.getPlatforms()) {
 			enemies.addEnemies(platform);
+			collectibles.addCollectibles(platform);
 		}
 	}
 	
@@ -75,7 +71,7 @@ public class Game extends JComponent{
 		platforms.draw(g,getWidth(),getHeight());
 		enemies.draw(g);
 		player.draw(g);
-		collectibles.draw(g, getWidth(), getHeight());
+		collectibles.draw(g);
 		hud.draw(g);
 	}
 }

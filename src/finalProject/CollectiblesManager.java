@@ -7,7 +7,6 @@ package finalProject;
  * multiple in the game all at different and varing locations.
  */
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -15,26 +14,33 @@ import java.util.ArrayList;
 public class CollectiblesManager {
 
 	private ArrayList<Collectible> collectibles = new ArrayList<>();
+	private static final int SPRITE_WIDTH = 35;
+	private static final int SPRITE_HEIGHT = 35;
+	
 	private SpriteManager sprite = new SpriteManager();
 	private Image gold_collectible; // silver_collectible;
 
 	public CollectiblesManager() {
 		sprite.loadGoldCoins();
-		sprite.loadSilverCoins();
-		gold_collectible = sprite.collectibleGoldImage();
-		// silver_collectible = sprite.collectibleSilverImage();
 	}
 
-	public void addCollectibles(int x, int y) {
-		collectibles.add(new Collectible(x, y, gold_collectible));
-		// collectibles.add(new Collectibles(x,y, silver_collectible));
+	public void addCollectibles(Platform platform) {
+		int spacing = 150;
+		int numOfCoinsPerPlatform = (platform.getWidth() - spacing) / spacing;
+		for(int i = 0; i < numOfCoinsPerPlatform; i++) {
+			int collectibleX = platform.getX() + 5;
+			int collectibleY = platform.getY() - SPRITE_HEIGHT;
+			if(collectibleX + SPRITE_WIDTH <= platform.getX() + platform.getWidth()) {
+				collectibles.add(new Collectible(collectibleX + spacing * i, collectibleY, sprite.collectibleGoldImage(), platform));
+
+				
+			}
+		}
 	}
 
-	public void draw(Graphics g, int screenWidth, int screenHeight) {
-		Image goldcoin = sprite.collectibleGoldImage();
-
-		for (Collectible p : collectibles) {
-			p.draw(g);
+	public void draw(Graphics g) {
+		for(Collectible collectibe: collectibles) {
+			collectibe.draw(g);
 		}
 	}
 

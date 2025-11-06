@@ -8,7 +8,6 @@ package finalProject;
  * direction and begins to move the other direction 
  */
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -32,9 +31,6 @@ public class Enemy {
 	
 	public void draw(Graphics g) {
 		g.drawImage(enemy, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
-
-//		g.setColor(Color.BLACK);
-//		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 
 	public int getSpriteWidth() {

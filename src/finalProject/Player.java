@@ -9,7 +9,6 @@ package finalProject;
  * based on the action the player is doing being running, jumping, or falling
  */
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -39,9 +38,6 @@ public class Player{
 	public void draw(Graphics g) {
 		Image currentImage = sprites.playerImage();
 		g.drawImage(currentImage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
-		
-//		g.setColor(Color.BLACK);
-//		g.drawRect(x, y, SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 	
 	public void update(int screenHeight, int screenWidth) {
