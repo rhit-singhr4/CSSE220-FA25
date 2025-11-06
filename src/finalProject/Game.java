@@ -14,15 +14,15 @@ import javax.swing.Timer;
 
 public class Game extends JComponent{
 	
-	private CollectiblesManager collectiblesManager = new CollectiblesManager();
-	private CollisionManager collisonManager = new CollisionManager();
-	private Player player = new Player();
-	private Enemy enemy1 = new Enemy();
-	private Inputs inputs = new Inputs(player);
-	private PlatformManager platformManager = new PlatformManager();
+	private CollectiblesManager collectibles = new CollectiblesManager();
 	private HUD hud = new HUD();
+	private Player player = new Player();
+	private EnemyManager enemies = new EnemyManager();
+	private Inputs inputs = new Inputs(player);
+	private PlatformManager platforms = new PlatformManager();
 	private JFrame frame = new JFrame();
 	private Timer timer;
+	private CollisionManager collisionManager = new CollisionManager(hud, player, platforms, enemies, collectibles);
 	
 	public void show() {
 		frame.add(this);
@@ -38,37 +38,40 @@ public class Game extends JComponent{
         timer = new Timer(1000 / 60, e -> {
         	inputs.update();
             player.update(getHeight(), getWidth());
-            collisonManager.playerToPlatformsCollision(player, platformManager);
+            collisionManager.playerToPlatformsCollision();
+            collisionManager.playerToEnemyCollision();
+            collisionManager.playerToCollectibles();
+
             player.updatePlayerSprite();
-            enemy1.update();
+            enemies.update();
             repaint();
         });
         timer.start();
     }
 	
 	public Game() {
-		platformManager.addPlatforms(800,775,20);
-		platformManager.addPlatforms(1100,650,2);
-		platformManager.addPlatforms(900,550,3);
-		platformManager.addPlatforms(350,550,10);
-		platformManager.addPlatforms(125,660,1);
-		platformManager.addPlatforms(1300,500,3);
+		platforms.addPlatforms(800,775,20);
+		platforms.addPlatforms(1100,650,2);
+		platforms.addPlatforms(900,550,3);
+		platforms.addPlatforms(350,550,10);
+		platforms.addPlatforms(125,660,1);
+		platforms.addPlatforms(1300,500,3);
 		
-		collectiblesManager.addCollectibles(800, 735);
-		collectiblesManager.addCollectibles(1400,735);
-		collectiblesManager.addCollectibles(1112, 610);
-		collectiblesManager.addCollectibles(780,360);
-		collectiblesManager.addCollectibles(125,620);
-		collectiblesManager.addCollectibles(1350,460);
+		
+		for(Platform platform: platforms.getPlatforms()) {
+			enemies.addEnemies(platform);
+			collectibles.addCollectibles(platform);
+		}
 	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.fillRect(0,  0,  getWidth(), getHeight());
-		platformManager.draw(g,getWidth(),getHeight());
-		enemy1.draw(g);
+		platforms.draw(g,getWidth(),getHeight());
+		enemies.draw(g);
 		player.draw(g);
-		collectiblesManager.draw(g, getWidth(), getHeight());
+		collectibles.draw(g);
 		hud.draw(g);
 	}
 }
