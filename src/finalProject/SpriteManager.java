@@ -23,6 +23,8 @@ public class SpriteManager {
 	
 	private Image gold_coin, silver_coin;
 	
+	private Image background;
+	
 	public SpriteManager() {
 		
 	}
@@ -127,5 +129,17 @@ public class SpriteManager {
 	public Image groundImage() {
 		return ground;
 		
+	}
+	
+	public void loadBackground() {
+		try {
+			background = ImageIO.read(getClass().getResource("background.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image backgroundImage() {
+		return background;
 	}
 }

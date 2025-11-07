@@ -10,28 +10,37 @@ package finalProject;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CollectiblesManager {
 
 	private ArrayList<Collectible> collectibles = new ArrayList<>();
 	private static final int SPRITE_WIDTH = 35;
 	private static final int SPRITE_HEIGHT = 35;
+	private Image currentImage;
 	
 	private SpriteManager sprite = new SpriteManager();
-	private Image gold_collectible; // silver_collectible;
 
 	public CollectiblesManager() {
 		sprite.loadGoldCoins();
+		sprite.loadSilverCoins();
 	}
 
 	public void addCollectibles(Platform platform) {
+		Random random = new Random();
 		int spacing = 50;
 		int numOfCoinsPerPlatform = (platform.getWidth() - spacing) / spacing;
 		for(int i = 0; i < numOfCoinsPerPlatform; i++) {
+			int chanceOfSilver = random.nextInt(6) + 1;
+			if(chanceOfSilver == 2) {
+				currentImage = sprite.collectibleSilverImage();
+			} else {
+				currentImage = sprite.collectibleGoldImage();
+			}
 			int collectibleX = platform.getX() + 5;
 			int collectibleY = platform.getY() - SPRITE_HEIGHT;
 			if(collectibleX + SPRITE_WIDTH <= platform.getX() + platform.getWidth()) {
-				collectibles.add(new Collectible(collectibleX + spacing * i, collectibleY, sprite.collectibleGoldImage(), platform));
+				collectibles.add(new Collectible(collectibleX + spacing * i, collectibleY, currentImage, platform));
 
 				
 			}

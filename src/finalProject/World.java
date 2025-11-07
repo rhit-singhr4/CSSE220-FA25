@@ -14,17 +14,18 @@ public class World {
 	private final Player player = new Player();
 	private final LevelManager levels = new LevelManager(platforms);
 	private final Inputs inputs = new Inputs(player, rocks);
+	private final SpriteManager sprite = new SpriteManager();
 	private final CollisionManager collisions = new CollisionManager(hud, player, platforms, enemies, collectibles,
 			rocks);
 	
 	public World() {
+		sprite.loadBackground();
 		loadLevel(currentLevel);
 		for (Platform platform : platforms.getPlatforms()) {
-			enemies.addEnemies(platform);
+			enemies.addEnemies(platform, 3);
 			collectibles.addCollectibles(platform);
 		}
 	}
-	
 	public Inputs getInputs() {
 		return inputs;
 	}
@@ -60,13 +61,13 @@ public class World {
 		}
 		
 		for (Platform platform : platforms.getPlatforms()) {
-			enemies.addEnemies(platform);
+			enemies.addEnemies(platform, 3);
 			collectibles.addCollectibles(platform);
 		}
 	}
 
 	public void draw(Graphics g, int width, int height) {
-		g.fillRect(0, 0, width, height);
+		g.drawImage(sprite.backgroundImage(), 0, 0, width, height, null);
 		platforms.draw(g, width, height);
 		rocks.draw(g);
 		enemies.draw(g);

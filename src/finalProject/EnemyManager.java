@@ -15,11 +15,14 @@ public class EnemyManager {
 		sprite.loadEnemy1();
 	}
 
-	public void addEnemies(Platform platform) {
-		int enemyX = platform.getX() + 10;
-		int enemyY = platform.getY() - SPRITE_HEIGHT;
-		
-		enemies.add(new Enemy(enemyX, enemyY, sprite.enemy1Image(), platform));
+	public void addEnemies(Platform platform, int numOfEnemies) {
+		int spacing = platform.getWidth() / (numOfEnemies + 1);
+		for(int i = 0; i < numOfEnemies; i++) {
+			int enemyX = platform.getX() + (spacing* i);
+			int enemyY = platform.getY() - SPRITE_HEIGHT;
+			enemies.add(new Enemy(enemyX, enemyY, sprite.enemy1Image(), platform));
+			
+		}
 	}
 	
 	public void update() {

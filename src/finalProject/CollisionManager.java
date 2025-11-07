@@ -87,8 +87,8 @@ public class CollisionManager {
 			for(int j = enemies.getEnemies().size() - 1; j >= 0; j--) {
 				Enemy enemy = enemies.getEnemies().get(j);
 				if (checkCollision(rock.getX() + shrink, rock.getY() + shrink, rock.getSpriteWidth() - shrink,
-						rock.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
-						enemy.getSpriteWidth() - shrink, enemy.getSpriteHeight() - shrink)) {
+						rock.getSpriteHeight() - shrink, enemy.getX(), enemy.getY(),
+						enemy.getSpriteWidth(), enemy.getSpriteHeight())) {
 					rocks.getRocks().remove(i);
 					enemies.getEnemies().remove(j);
 					break;
