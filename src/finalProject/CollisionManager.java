@@ -15,15 +15,18 @@ public class CollisionManager {
 	private PlatformManager platforms;
 	private EnemyManager enemies;
 	private CollectiblesManager collectibles;
+	private RockManager rocks;
+	
+	private int shrink = 10;
 
-	public CollisionManager(HUD hud, Player player, PlatformManager platforms, EnemyManager enemies, CollectiblesManager collectibles) {
+	public CollisionManager(HUD hud, Player player, PlatformManager platforms, EnemyManager enemies, CollectiblesManager collectibles, RockManager rocks) {
 		this.hud = hud;
 		this.player = player;
 		this.platforms = platforms;
 		this.enemies = enemies;
 		this.collectibles = collectibles;
+		this.rocks = rocks;
 	}
-	
 
 	private boolean checkCollision(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2) {
 		return x1 + width1 > x2 && x1 < x2 + width2 && y1 + height1 > y2 && y1 < y2 + height2;
@@ -54,7 +57,6 @@ public class CollisionManager {
 	}
 
 	public void playerToEnemyCollision() {
-		int shrink = 10;
 		for (Enemy enemy : enemies.getEnemies()) {
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
@@ -67,7 +69,6 @@ public class CollisionManager {
 	}
 
 	public void playerToCollectibles() {
-		int shrink = 10;
 		for (int i = collectibles.getCollectibles().size() - 1; i >= 0; i--) {
 			Collectible collectible = collectibles.getCollectibles().get(i);
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
@@ -79,4 +80,21 @@ public class CollisionManager {
 
 		}
 	}
+	
+	public void rockToEnemyCollision() {
+		for(int i = rocks.getRocks().size() - 1; i >= 0; i--) {
+			Rock rock = rocks.getRocks().get(i);
+			for(int j = enemies.getEnemies().size() - 1; j >= 0; j--) {
+				Enemy enemy = enemies.getEnemies().get(j);
+				if (checkCollision(rock.getX() + shrink, rock.getY() + shrink, rock.getSpriteWidth() - shrink,
+						rock.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
+						enemy.getSpriteWidth() - shrink, enemy.getSpriteHeight() - shrink)) {
+					rocks.getRocks().remove(i);
+					enemies.getEnemies().remove(j);
+					break;
+				}
+			}
+		}
+	}
 }
+ 

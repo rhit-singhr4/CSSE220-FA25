@@ -12,11 +12,14 @@ import java.awt.event.KeyListener;
 public class Inputs implements KeyListener{
 	
 	private Player player;
+	private RockManager rocks;
 	private boolean leftPressed = false;
 	private boolean rightPressed = false;
+	private boolean spacePressed = false;
 
-	public Inputs(Player player) {
+	public Inputs(Player player, RockManager rocks) {
 		this.player = player;
+		this.rocks = rocks;
 	}
 	
 	@Override
@@ -25,6 +28,7 @@ public class Inputs implements KeyListener{
 		case KeyEvent.VK_UP -> player.jump();
 		case KeyEvent.VK_LEFT -> leftPressed = true;
 		case KeyEvent.VK_RIGHT -> rightPressed = true;
+		case KeyEvent.VK_SPACE -> spacePressed = true;
 		}
 	}
 	
@@ -36,6 +40,11 @@ public class Inputs implements KeyListener{
 		} else {
 			player.setIdle(true);
 		}
+		
+		if(spacePressed) {
+			rocks.addRocks(player);
+			spacePressed = false;
+		}
 	}
 	
 	@Override
@@ -45,6 +54,7 @@ public class Inputs implements KeyListener{
 		switch(e.getKeyCode()) {
 		case KeyEvent.VK_LEFT -> leftPressed = false;
 		case KeyEvent.VK_RIGHT -> rightPressed = false;
+		case KeyEvent.VK_SPACE -> spacePressed = false;
 		}
 	}	
 }

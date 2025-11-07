@@ -57,6 +57,18 @@ public class SpriteManager {
 	public Image playerImage() {
 		return currentPlayerImage;
 	}
+	
+	public void loadRock() {
+		try {
+			rock = ImageIO.read(getClass().getResource("rock.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image rockImage() {
+		return rock;
+	}
 
 	public void loadGoldCoins() {
 		try {

@@ -8,6 +8,7 @@ public class HUD {
 	
 	private int score = 0;
 	private int lives = 3;
+	private int rocks = 32;
 	
 	public int getScore() {
 		return score;
@@ -27,15 +28,25 @@ public class HUD {
 		//repaint();
 	}
 	
+	public int getRocks() {
+		return rocks;
+	}
+
+	public void setRocks(int rocks) {
+		this.rocks = rocks;
+	}
+
 	public void draw(Graphics g) {
-		//Score
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial", Font.BOLD, 25));
+		
+		//Score
 		g.drawString("Score: " + score, 10,50);
 		
 		//Lives
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Arial", Font.BOLD, 25));
 		g.drawString("Lives: " + lives, 10, 75);
+		
+		//Rocks
+		g.drawString("Rocks: " + rocks, 10, 100);
 	}
 }

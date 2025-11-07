@@ -126,4 +126,12 @@ public class Player{
 	public void setOnGround(boolean onGround) {
 		this.onGround = onGround;
 	}
+
+	public boolean isFacingLeft() {
+		return facingLeft;
+	}
+
+	public void setFacingLeft(boolean facingLeft) {
+		this.facingLeft = facingLeft;
+	}
 }
