@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 public class Inputs implements KeyListener{
 	
 	private Player player;
+	private World world;
 	private RockManager rocks;
 	private boolean leftPressed = false;
 	private boolean rightPressed = false;

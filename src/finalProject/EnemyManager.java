@@ -46,6 +46,10 @@ public class EnemyManager {
 		}
 	}
 	
+	public void clearEnemies() {
+		enemies.clear();
+	}
+	
 	public ArrayList<Enemy> getEnemies() {
 		return enemies;
 	}

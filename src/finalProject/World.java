@@ -3,6 +3,8 @@ package finalProject;
 import java.awt.Graphics;
 
 public class World {
+	
+	private int currentLevel = 1;
 
 	private final HUD hud = new HUD();
 	private final CollectiblesManager collectibles = new CollectiblesManager();
@@ -16,8 +18,7 @@ public class World {
 			rocks);
 	
 	public World() {
-		levels.level2();
-
+		loadLevel(currentLevel);
 		for (Platform platform : platforms.getPlatforms()) {
 			enemies.addEnemies(platform);
 			collectibles.addCollectibles(platform);
@@ -39,6 +40,29 @@ public class World {
 		collisions.rockToEnemyCollision();
 		player.updatePlayerSprite();
 		enemies.update();
+		
+		int currentScore = hud.getScore();
+		if(currentScore >= 42 && currentLevel == 1) {
+			currentLevel = 2;
+			loadLevel(currentLevel);
+		}
+	}
+	
+	public void loadLevel(int level) {
+		platforms.clearPlatforms();
+		enemies.clearEnemies();
+		collectibles.clearCollectibles();
+		
+		if(level == 1) {
+			levels.level1();
+		} else if(level == 2) {
+			levels.level2();
+		}
+		
+		for (Platform platform : platforms.getPlatforms()) {
+			enemies.addEnemies(platform);
+			collectibles.addCollectibles(platform);
+		}
 	}
 
 	public void draw(Graphics g, int width, int height) {
@@ -50,4 +74,10 @@ public class World {
 		collectibles.draw(g);
 		hud.draw(g);
 	}
+
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+	
+	
 }

@@ -43,6 +43,10 @@ public class CollectiblesManager {
 			collectibe.draw(g);
 		}
 	}
+	
+	public void clearCollectibles() {
+		collectibles.clear();
+	}
 
 	public ArrayList<Collectible> getCollectibles() {
 		return collectibles;

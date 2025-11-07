@@ -43,6 +43,10 @@ public class PlatformManager {
 		}
 	}
 	
+	public void clearPlatforms() {
+		platforms.clear();
+	}
+	
 	public ArrayList<Platform> getPlatforms() {
 		return platforms;
 	}
