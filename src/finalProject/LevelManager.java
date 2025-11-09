@@ -25,7 +25,7 @@ public class LevelManager {
 		platforms.addPlatforms(150,710,2);
 		platforms.addPlatforms(700, 620, 10);
 		platforms.addPlatforms(900, 400, 6);
-		platforms.addPlatforms(1250, 250, 10);
+		platforms.addPlatforms(1250, 250, 8);
 		platforms.addPlatforms(1250, 500, 3);
 	}
 }
