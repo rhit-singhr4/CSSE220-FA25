@@ -8,7 +8,7 @@ public class HUD {
 	
 	private int score = 0;
 	private int lives = 3;
-	private int rocks = 32;
+	private int rocks = 100;
 	
 	public int getScore() {
 		return score;

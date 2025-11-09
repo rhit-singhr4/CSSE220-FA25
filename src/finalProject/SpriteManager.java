@@ -14,7 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class SpriteManager {
-	
+	// Variables for all sprites
 	private Image idle_r, idle_l, run_r, run_l, rock ,currentPlayerImage;
 	
 	private Image enemy_l, enemy_r, currentEnemyImage;
@@ -25,11 +25,16 @@ public class SpriteManager {
 	
 	private Image background;
 	
+	private Image win;
+	
+	private Image loser;
+	
 	public SpriteManager() {
 		
 	}
 	
 	public void loadPlayer() {
+		// Loads all version of the player sprite
 		try {
 			idle_l = ImageIO.read(getClass().getResource("player_idle_left.png"));
 			run_l = ImageIO.read(getClass().getResource("player_run_left.png"));
@@ -42,6 +47,7 @@ public class SpriteManager {
 	}
 	
 	public void updatePlayerSprite(boolean facingLeft, boolean isIdle) {
+		// logic for deciding what direction the sprite is facing to load the correct sprite
 		if(!isIdle) {
 			if(facingLeft) {
 				currentPlayerImage = run_l;
@@ -60,6 +66,7 @@ public class SpriteManager {
 		return currentPlayerImage;
 	}
 	
+	// Creates the rock sprite
 	public void loadRock() {
 		try {
 			rock = ImageIO.read(getClass().getResource("rock.png"));
@@ -71,7 +78,8 @@ public class SpriteManager {
 	public Image rockImage() {
 		return rock;
 	}
-
+	
+	// Creates the coin/collectibles sprites
 	public void loadGoldCoins() {
 		try {
 			gold_coin = ImageIO.read(getClass().getResource("Gold_Coin.png"));
@@ -96,6 +104,7 @@ public class SpriteManager {
 		return silver_coin;
 	}
 	
+	// Creates the enemy sprites and determines what direction the sprite is facing to load the correct version
 	public void updateEnemy1Sprite(boolean facingLeft) {
 		if(facingLeft) {
 			currentEnemyImage = enemy_l;
@@ -118,6 +127,7 @@ public class SpriteManager {
 		return currentEnemyImage;
 	}
 	
+	// Creates the platforms and ground sprites
 	public void loadPlatforms() {
 		try {
 			ground = ImageIO.read(getClass().getResource("dirt_block.png"));
@@ -131,6 +141,7 @@ public class SpriteManager {
 		
 	}
 	
+	// Creates the background sprite for the game
 	public void loadBackground() {
 		try {
 			background = ImageIO.read(getClass().getResource("background.png"));
@@ -141,5 +152,31 @@ public class SpriteManager {
 	
 	public Image backgroundImage() {
 		return background;
+	}
+	
+	// Creates the winner sprite screen
+	public void loadwinnerImage() {
+		try {
+			win = ImageIO.read(getClass().getResource("win_screen.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image winnerImage() {
+		return win;
+	}
+	
+	// creates the loser sprite screen
+	public void loadloserImage() {
+		try {
+			loser = ImageIO.read(getClass().getResource("Game_over.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image loserImage() {
+		return loser;
 	}
 }

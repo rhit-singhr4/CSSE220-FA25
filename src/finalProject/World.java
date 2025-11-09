@@ -43,9 +43,17 @@ public class World {
 		enemies.update();
 		
 		int currentScore = hud.getScore();
-		if(currentScore >= 42 && currentLevel == 1) {
+		if(currentScore >= 76 && currentLevel == 1) {
 			currentLevel = 2;
 			loadLevel(currentLevel);
+		}
+		
+		int over = hud.getLives();
+		if (over == 0) {
+			sprite.loadloserImage();
+			enemies.clearEnemies();
+			collectibles.clearCollectibles();
+			platforms.clearPlatforms();
 		}
 	}
 	
@@ -65,9 +73,10 @@ public class World {
 			collectibles.addCollectibles(platform);
 		}
 	}
-
+	
 	public void draw(Graphics g, int width, int height) {
 		g.drawImage(sprite.backgroundImage(), 0, 0, width, height, null);
+		g.drawImage(sprite.loserImage(), 0, 0, width, height, null);
 		platforms.draw(g, width, height);
 		rocks.draw(g);
 		enemies.draw(g);

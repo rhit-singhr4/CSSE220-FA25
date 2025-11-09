@@ -64,6 +64,7 @@ public class Player{
 		sprites.updatePlayerSprite(facingLeft, isIdle);
 	}
 	
+	
 	public void jump() {
 		if(onGround) {
 			velY = JUMP_POWER;
