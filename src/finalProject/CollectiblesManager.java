@@ -13,19 +13,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CollectiblesManager {
-
+	// Creates an array list for collectibles to create multiple of the one drawn
 	private ArrayList<Collectible> collectibles = new ArrayList<>();
 	private static final int SPRITE_WIDTH = 35;
 	private static final int SPRITE_HEIGHT = 35;
 	private Image currentImage;
 	
 	private SpriteManager sprite = new SpriteManager();
-
+	// loads the two collectibles
 	public CollectiblesManager() {
 		sprite.loadGoldCoins();
 		sprite.loadSilverCoins();
 	}
 
+	// creates multiple and sets the locations that are attach to the position of the platforms. Also spawns 
+	// a certain number of collectibles depending on the length of the platform
 	public void addCollectibles(Platform platform) {
 		Random random = new Random();
 		int spacing = 50;

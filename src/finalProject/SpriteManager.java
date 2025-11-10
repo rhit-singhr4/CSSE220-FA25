@@ -2,7 +2,7 @@ package finalProject;
 
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The SpriteManager class adds in all of our sprites used in the game 
  * This class deals with loading in our sprites we created and updating the version of a sprite we want based on
  * the controls being used

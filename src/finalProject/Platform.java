@@ -12,6 +12,7 @@ import java.awt.Image;
 
 public class Platform {
 	
+	// Gets the sprite size information and platform spawn locations
 	private Image ground;
 	private int spriteHeight;
 	private int spriteWidth;
@@ -28,6 +29,7 @@ public class Platform {
 	}
 	
 	public void draw(Graphics g) {
+		// draws a single platform that is used to create multiple in the platformManager class
 		for(int i = 0; i < tileWidth; i++) {
 			g.drawImage(ground, x + (spriteWidth*i), y, spriteWidth, spriteHeight,null);
 		}
