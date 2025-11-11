@@ -17,7 +17,7 @@ public class RockManager {
 	
 	private static final int SPEED = 6;
 	
-	private int maxRocks = 35;
+	private int maxRocks = 100;
 	private int currentRocks = maxRocks;
 	
 	public RockManager() {

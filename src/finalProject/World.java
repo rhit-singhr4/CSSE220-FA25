@@ -5,6 +5,8 @@ import java.awt.Graphics;
 public class World {
 	
 	private int currentLevel = 1;
+	private boolean gameOver = false;
+	private boolean playerWon = false;
 
 	private final HUD hud = new HUD();
 	private final CollectiblesManager collectibles = new CollectiblesManager();
@@ -20,6 +22,8 @@ public class World {
 	
 	public World() {
 		sprite.loadBackground();
+		sprite.loadloserImage();
+		sprite.loadwinnerImage();
 		loadLevel(currentLevel);
 	}
 	public Inputs getInputs() {
@@ -27,6 +31,10 @@ public class World {
 	}
 
 	public void update(int width, int height) {
+		if(gameOver) {
+			return;
+		}
+		
 		inputs.update();
 		player.update(height, width);
 		rocks.update(width);
@@ -41,9 +49,19 @@ public class World {
 		if(collectibles.getCollectibles().isEmpty() && currentLevel == 1) {
 			currentLevel = 2;
 			loadLevel(currentLevel);
+		} else if(collectibles.getCollectibles().isEmpty() && currentLevel == 2) {
+			gameOver = true;
+			playerWon = true;
+			sprite.loadloserImage();
+			enemies.clearEnemies();
+			collectibles.clearCollectibles();
+			platforms.clearPlatforms();
 		}
+		
 		int over = hud.getLives();
 		if (over == 0) {
+			gameOver = true;
+			playerWon = false;
 			sprite.loadloserImage();
 			enemies.clearEnemies();
 			collectibles.clearCollectibles();
@@ -70,7 +88,16 @@ public class World {
 	
 	public void draw(Graphics g, int width, int height) {
 		g.drawImage(sprite.backgroundImage(), 0, 0, width, height, null);
-		g.drawImage(sprite.loserImage(), 0, 0, width, height, null);
+		
+		if(gameOver) {
+			if(playerWon) {
+				g.drawImage(sprite.winnerImage(), 0, 0, width, height, null);
+			} else {
+				g.drawImage(sprite.loserImage(), 0, 0, width, height, null);
+
+			}
+		}
+		
 		platforms.draw(g, width, height);
 		rocks.draw(g);
 		enemies.draw(g);

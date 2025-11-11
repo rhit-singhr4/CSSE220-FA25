@@ -9,7 +9,7 @@ public class HUD {
 	// Sets the initial value of each component
 	private int score = 0;
 	private int lives = 3;
-	private int rocks = 35;
+	private int rocks = 100;
 	
 	public int getScore() {
 		// We can access the value and change it

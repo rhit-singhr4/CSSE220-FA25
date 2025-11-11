@@ -34,6 +34,6 @@ public class LevelManager {
 		platforms.addPlatforms(1250, 250, 8);
 		platforms.addPlatforms(1250, 500, 3);
 		
-		player.setSpawn(420, 840);
+		player.setSpawn(50, 840);
 	}
 }
