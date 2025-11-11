@@ -9,7 +9,7 @@ public class LevelManager {
 		this.platforms = platforms;
 		this.player = player;
 	}
-	
+	//hi
 	public void level1() {
 		platforms.addPlatforms(700,775,20);
 		platforms.addPlatforms(1100,650,8);

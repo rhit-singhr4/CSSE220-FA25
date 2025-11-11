@@ -16,7 +16,7 @@ public class Collectible {
 	private int x, y;
 	private int pointValue;
 	private Image collectibleimage;
-
+	
 	public Collectible(int x, int y, Image collectible, Platform platform, int pointValue) {
 		this.x = x;
 		this.y = y;
