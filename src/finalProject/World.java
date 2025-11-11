@@ -15,7 +15,7 @@ public class World {
 	private final PlatformManager platforms = new PlatformManager();
 	private final Player player = new Player();
 	private final LevelManager levels = new LevelManager(platforms, player);
-	private final Inputs inputs = new Inputs(player, rocks);
+	private final Inputs inputs; 
 	private final SpriteManager sprite = new SpriteManager();
 	private final CollisionManager collisions = new CollisionManager(hud, player, platforms, enemies, collectibles,
 			rocks);
@@ -24,10 +24,27 @@ public class World {
 		sprite.loadBackground();
 		sprite.loadloserImage();
 		sprite.loadwinnerImage();
+		inputs = new Inputs(player, rocks, this);
 		loadLevel(currentLevel);
 	}
+	
 	public Inputs getInputs() {
 		return inputs;
+	}
+	
+	public void restartGame() {
+		currentLevel = 1;
+		gameOver = false;
+		playerWon = false;
+		hud.setRocks(0);
+		hud.setLives(3);
+		hud.setRocks(100);
+		rocks.setCurrentRocks(100);
+		enemies.clearEnemies();
+		collectibles.clearCollectibles();
+		platforms.clearPlatforms();
+		loadLevel(1);
+		
 	}
 
 	public void update(int width, int height) {

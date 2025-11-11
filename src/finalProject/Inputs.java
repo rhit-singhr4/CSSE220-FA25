@@ -18,15 +18,18 @@ public class Inputs implements KeyListener{
 	private boolean rightPressed = false;
 	private boolean spacePressed = false;
 
-	public Inputs(Player player, RockManager rocks) {
+	public Inputs(Player player, RockManager rocks, World world) {
 		this.player = player;
 		this.rocks = rocks;
+		this.world = world;
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// Controls the players movements with a shoot, jump, move left, and move right
 		switch(e.getKeyCode())	 {
+		case KeyEvent.VK_R -> world.restartGame();
+		case KeyEvent.VK_Q -> System.exit(0);
 		case KeyEvent.VK_UP -> player.jump();
 		case KeyEvent.VK_LEFT -> leftPressed = true;
 		case KeyEvent.VK_RIGHT -> rightPressed = true;
