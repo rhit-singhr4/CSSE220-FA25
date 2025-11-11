@@ -1,5 +1,11 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylon
+ * The level manager class sets up the levels by hard coding the platforms to set up the stage and 
+ * where everything spawns including the collectibles and enemies.
+ */
+
 public class LevelManager {
 
 	private PlatformManager platforms = new PlatformManager();
@@ -9,8 +15,8 @@ public class LevelManager {
 		this.platforms = platforms;
 		this.player = player;
 	}
-	//hi
 	public void level1() {
+		// Adds platforms for level 1 and spawn point
 		platforms.addPlatforms(700,775,20);
 		platforms.addPlatforms(1100,650,8);
 		platforms.addPlatforms(900,550,5);
@@ -24,11 +30,12 @@ public class LevelManager {
 	}
 	
 	public void level2() {
+		// Adds platforms for level 2 and spawn point
 		platforms.addPlatforms(400, 790,5);
 		platforms.addPlatforms(1000, 770, 10);
 		platforms.addPlatforms(200,500,8);
 		platforms.addPlatforms(20,630,3);
-		platforms.addPlatforms(150,710,2);
+		platforms.addPlatforms(150,710,4);
 		platforms.addPlatforms(700, 620, 10);
 		platforms.addPlatforms(900, 400, 6);
 		platforms.addPlatforms(1250, 250, 8);

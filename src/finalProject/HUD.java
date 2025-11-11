@@ -1,5 +1,12 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylo
+ * The HUD class sets up the score display, lives, and rock count for the player. The hud is in the top left corner
+ * and remains there all game being interactive with the collision adjusting the score, lives, and number of rocks
+ * based on collision and buttons pressed.
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

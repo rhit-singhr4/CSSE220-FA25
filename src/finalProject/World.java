@@ -1,13 +1,23 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylon
+ * The world class puts all the components together. It calls everything and adds it into a single frame.
+ * Loading the initial level and deals with the transitions between the levels and the game over and winner screens.
+ * This is also where everything is updated like the score, lives, and sprites loaded 
+ */
+
 import java.awt.Graphics;
 
 public class World {
 	
+	// deals with loading the first level and a true or false statement if the game is over or not 
+	// And decided which screen to put up at the end of the game.
 	private int currentLevel = 1;
 	private boolean gameOver = false;
 	private boolean playerWon = false;
 
+	// Calls all the components
 	private final HUD hud = new HUD();
 	private final CollectiblesManager collectibles = new CollectiblesManager();
 	private final EnemyManager enemies = new EnemyManager();
@@ -21,6 +31,7 @@ public class World {
 			rocks);
 	
 	public World() {
+		// Loads the background and the first level
 		sprite.loadBackground();
 		sprite.loadloserImage();
 		sprite.loadwinnerImage();
@@ -33,6 +44,7 @@ public class World {
 	}
 	
 	public void restartGame() {
+		// Creates the restart values when you lose the game or win the game and want to play again
 		currentLevel = 1;
 		gameOver = false;
 		playerWon = false;
@@ -63,6 +75,7 @@ public class World {
 		player.updatePlayerSprite();
 		enemies.update();
 		
+		// The if statement determines when to switch levels or switch screens if you win or lose the game
 		if(collectibles.getCollectibles().isEmpty() && currentLevel == 1) {
 			currentLevel = 2;
 			loadLevel(currentLevel);
@@ -87,16 +100,19 @@ public class World {
 	}
 	
 	public void loadLevel(int level) {
+		// Clears all the old platforms, enemies, and collectibles when there is a transition
 		platforms.clearPlatforms();
 		enemies.clearEnemies();
 		collectibles.clearCollectibles();
 		
+		// changes the level
 		if(level == 1) {
 			levels.level1();
 		} else if(level == 2) {
 			levels.level2();
 		}
 		
+		// adds the collectibles and enemies to the platforms
 		for (Platform platform : platforms.getPlatforms()) {
 			enemies.addEnemies(platform, 3);
 			collectibles.addCollectibles(platform);
@@ -104,6 +120,7 @@ public class World {
 	}
 	
 	public void draw(Graphics g, int width, int height) {
+		// Draws everything to the frame
 		g.drawImage(sprite.backgroundImage(), 0, 0, width, height, null);
 		
 		if(gameOver) {

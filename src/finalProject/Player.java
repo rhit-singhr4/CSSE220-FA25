@@ -2,7 +2,7 @@ package finalProject;
 
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The player class sets up the variables for the player including start position, speed, and jump that move the player
  * This class also creates the player calling in the sprite and drawing in the sprite to be shown. 
  * This class deals with the gravity component and switches between the different versions we have on the sprite 
@@ -14,6 +14,7 @@ import java.awt.Image;
 
 public class Player{
 	
+	// Player variables
 	private int x = 50;
 	private int y = 840;
 	
@@ -44,6 +45,7 @@ public class Player{
 	}
 	
 	public void update(int screenHeight, int screenWidth) {
+		// Sets the gravity affects
 		onGround = false;
 		
 		if(x <= -10) {
@@ -69,6 +71,7 @@ public class Player{
 	
 	
 	public void jump() {
+		// Deals with the jump effect
 		if(onGround) {
 			velY = JUMP_POWER;
 			onGround = false;
@@ -76,17 +79,20 @@ public class Player{
 	}
 	
 	public void moveLeft() {
+		// Deals with the movement going left and loading the left sprite image
 		x -= SPEED; 
 		isIdle = false;
 		facingLeft = true;
 	}
 	
 	public void moveRight() {
+		// Deals with the movement going right and loading the right sprite image
 		x += SPEED; 
 		isIdle = false;
 		facingLeft = false;
 	}
 	public void respawnPlayer() {
+		// respawns the players location
 		x = spawnX;
 		y = spawnY;
 	}
