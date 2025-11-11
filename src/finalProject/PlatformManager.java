@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class PlatformManager {
 	
+	// creates an array list of platforms to have multiple
 	private ArrayList<Platform> platforms = new ArrayList<>();
 	private SpriteManager sprite = new SpriteManager();
 	private static final int SPRITE_WIDTH = 35;
@@ -37,16 +38,17 @@ public class PlatformManager {
 		for(int i = 0; i < tiles; i++) {
 			g.drawImage(ground, SPRITE_WIDTH*i, screenHeight - SPRITE_HEIGHT, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 		}
-		
+		// draws the multiple platforms
 		for(Platform p: platforms) {
 			p.draw(g);
 		}
 	}
 	
 	public void clearPlatforms() {
+		// clears the platforms to spawn the new level or when the game is over 
 		platforms.clear();
 	}
-	
+	// adds them to the array list
 	public ArrayList<Platform> getPlatforms() {
 		return platforms;
 	}

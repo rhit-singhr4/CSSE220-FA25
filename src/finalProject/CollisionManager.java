@@ -5,18 +5,22 @@ package finalProject;
  * between everything. This includes player and platform (MileStone 1 what is
  * currently present). Then will later include a collision between the player
  * and enemy, and the player and the collectibles. This collision class allows
- * the player to stand on the platforms and not fall through the platforms
+ * the player to stand on the platforms and not fall through the platforms.
+ * The collision now has the capabilities to interact with the player and enemies
+ * And interaction with the hud increasing the score with collectibles or losing a life with enemies
+ * There is also a collision with rocks and enemies.
  */
 
 public class CollisionManager {
 	
+	// variables
 	private HUD hud;
 	private Player player;
 	private PlatformManager platforms;
 	private EnemyManager enemies;
 	private CollectiblesManager collectibles;
 	private RockManager rocks;
-	
+	// creates a hit box
 	private int shrink = 10;
 
 	public CollisionManager(HUD hud, Player player, PlatformManager platforms, EnemyManager enemies, CollectiblesManager collectibles, RockManager rocks) {
@@ -31,7 +35,8 @@ public class CollisionManager {
 	private boolean checkCollision(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2) {
 		return x1 + width1 > x2 && x1 < x2 + width2 && y1 + height1 > y2 && y1 < y2 + height2;
 	}
-
+	
+	//platform collisions so the player doesn't fall through the platform and can jump through one at the bottom
 	public void playerToPlatformsCollision() {
 		for (Platform platform : platforms.getPlatforms()) {
 			if (checkCollision(player.getX(), player.getY(), player.getSpriteWidth(), player.getSpriteHeight(),
@@ -57,24 +62,27 @@ public class CollisionManager {
 	}
 
 	public void playerToEnemyCollision() {
+		// creates the collision between the player and enemy
 		for (Enemy enemy : enemies.getEnemies()) {
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
 					enemy.getSpriteWidth() - shrink, enemy.getSpriteHeight() - shrink)) {
+				// Player loses a life when hit by enemy
 				hud.setLives(hud.getLives() - 1);
-				player.respawnPlayer();
 				break;
 			}
 		}
 	}
 
 	public void playerToCollectibles() {
+		// collision between the player and coins
 		for (int i = collectibles.getCollectibles().size() - 1; i >= 0; i--) {
 			Collectible collectible = collectibles.getCollectibles().get(i);
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, collectible.getX() + shrink, collectible.getY() + shrink,
 					collectible.getSpriteWidth() - shrink, collectible.getSpriteHeight() - shrink)) {
-				hud.setScore(hud.getScore() + collectible.getPointValue());
+				// Adds to the score everytime a coin is collected
+				hud.setScore(hud.getScore() + 1);
 				collectibles.getCollectibles().remove(i);
 			}
 
@@ -82,6 +90,7 @@ public class CollisionManager {
 	}
 	
 	public void rockToEnemyCollision() {
+		// Creates the collision between the rock and enemy
 		for(int i = rocks.getRocks().size() - 1; i >= 0; i--) {
 			Rock rock = rocks.getRocks().get(i);
 			for(int j = enemies.getEnemies().size() - 1; j >= 0; j--) {

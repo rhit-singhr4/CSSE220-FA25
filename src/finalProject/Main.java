@@ -1,7 +1,7 @@
 package finalProject;
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * Calls the game class to run the game
  */
 

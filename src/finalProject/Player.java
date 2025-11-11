@@ -2,7 +2,7 @@ package finalProject;
 
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The player class sets up the variables for the player including start position, speed, and jump that move the player
  * This class also creates the player calling in the sprite and drawing in the sprite to be shown. 
  * This class deals with the gravity component and switches between the different versions we have on the sprite 
@@ -14,12 +14,11 @@ import java.awt.Image;
 
 public class Player{
 	
+	// sets the players spawn position and reset position
 	private int x = 50;
 	private int y = 840;
-	
-	private int spawnX = 50;
-	private int spawnY = 840;
-	
+
+	// sets the gravity and jump interaction for the player
 	private static final int SPEED = 5;
 	private static final double GRAVITY = 0.5;
 	private static final int JUMP_POWER = -12;
@@ -44,6 +43,7 @@ public class Player{
 	}
 	
 	public void update(int screenHeight, int screenWidth) {
+		// Incorporates the gravity feature
 		onGround = false;
 		
 		if(x <= -10) {
@@ -69,6 +69,7 @@ public class Player{
 	
 	
 	public void jump() {
+		// Changes the y value of the sprite to create the jump feature when the correct key is pressed
 		if(onGround) {
 			velY = JUMP_POWER;
 			onGround = false;
@@ -76,29 +77,20 @@ public class Player{
 	}
 	
 	public void moveLeft() {
+		// Changes the x position of the sprite when the correct key is pressed and set the correct sprite image
 		x -= SPEED; 
 		isIdle = false;
 		facingLeft = true;
 	}
 	
 	public void moveRight() {
+		// Changes the x position of the sprite when the correct key is pressed and set the correct sprite image
 		x += SPEED; 
 		isIdle = false;
 		facingLeft = false;
 	}
-	public void respawnPlayer() {
-		x = spawnX;
-		y = spawnY;
-	}
 	
-	public void setSpawn(int x, int y) {
-		this.x = x;
-		this.y = y;
-		spawnX = x;
-		spawnY = y;
-		
-	}
-
+	// Gets and checks for values to be used throughout the game to change values or set values
 	public int getX() {
 		return x;
 	}

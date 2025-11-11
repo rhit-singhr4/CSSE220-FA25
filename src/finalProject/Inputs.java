@@ -1,7 +1,7 @@
  package finalProject;
 
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The inputs class deals with all the controls for the player. This is where all the keys are set up.
  * where holding the right arrow moves right, holding the left arrow moves left, and pressing the up arrow jumps
  */
@@ -25,6 +25,7 @@ public class Inputs implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
+		// Controls the players movements with a shoot, jump, move left, and move right
 		switch(e.getKeyCode())	 {
 		case KeyEvent.VK_UP -> player.jump();
 		case KeyEvent.VK_LEFT -> leftPressed = true;
@@ -34,6 +35,7 @@ public class Inputs implements KeyListener{
 	}
 	
 	public void update() {
+		// updates the movement to switch the sprite being displayed based on the key pressed
 		if(leftPressed) {
 			player.moveLeft();
 		} else if(rightPressed) {
@@ -48,6 +50,8 @@ public class Inputs implements KeyListener{
 		}
 	}
 	
+	
+	// This is so the action can only occur when the key is activly being pressed or held
 	@Override
 	public void keyTyped(KeyEvent e) {}
 	@Override

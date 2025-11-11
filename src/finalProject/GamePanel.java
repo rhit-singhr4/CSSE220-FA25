@@ -1,5 +1,10 @@
 package finalProject;
 
+/*
+ * @Authors: Raj, Andrew, and Braylon
+ * Starts the game Adding everything to a panel to be displayed and called in the game class
+ */
+
 import java.awt.Graphics;
 
 import javax.swing.JComponent;
@@ -17,6 +22,7 @@ public class GamePanel extends JComponent {
 	}
 	
 	public void startGameLoop() {
+		// Starts the game to have everything spawn
 		timer = new Timer(1000 / 60, e -> {
 			world.update(getWidth(), getHeight());
 			repaint();

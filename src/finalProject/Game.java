@@ -16,6 +16,7 @@ public class Game{
 	private GamePanel gamePanel = new GamePanel(world);
 	
 	public Game() {
+		// Adds everything to the frame
 		frame.setTitle("Final Project");
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setSize(1480,1080);
@@ -23,6 +24,7 @@ public class Game{
 	}
 	
 	public void show() {
+		// displays the frame with all of the components
 		frame.setVisible(true);
 		gamePanel.startGameLoop();
 	}
