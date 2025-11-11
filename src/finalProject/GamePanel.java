@@ -16,6 +16,7 @@ public class GamePanel extends JComponent {
 	private Timer timer;
 	
 	public GamePanel(World world) {
+		// Adds everything from world
 		this.world = world;
 		setFocusable(true);
 		addKeyListener(world.getInputs());

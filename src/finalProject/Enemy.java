@@ -1,6 +1,6 @@
 package finalProject;
 /*
- * @Authors: Raj, Andrew, and Braylo
+ * @Authors: Raj, Andrew, and Braylon
  * The Enemy class sets up the speed variable for the enemy determining what direction the enemy should move
  * This class creates an auto moving enemy that starts moving the moment it is loaded in the game
  * The enemy patrols by moving one direction constantly then hits the border of the screen than flips
@@ -12,6 +12,7 @@ import java.awt.Image;
 
 public class Enemy {
 
+	// The variables for the enemy
 	private Image enemy;
 	private int x;
 	private int y;
@@ -34,10 +35,12 @@ public class Enemy {
 	}
 	
 	public void takeDamadge(int damage) {
+		// Sets the health of the enemy
 		health -= damage;
 	}
 	
 	public boolean isDead() {
+		// gets rid of the enemy when it has no more health
 		return health <= 0;
 	}
 
@@ -70,6 +73,7 @@ public class Enemy {
 	}
 
 	public void setX(int x) {
+		// sets its x position to start moving
 		this.x = x;
 	}
 

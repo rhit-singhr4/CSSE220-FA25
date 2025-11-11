@@ -1,7 +1,7 @@
 package finalProject;
  
 /*
-* @Authors: Raj, Andrew, and Braylo
+* @Authors: Raj, Andrew, and Braylon
 * The game class sets up the main frame that calls all the componenets together
 * adding everything to the frame and displaying
 * the player, enemy, platforms, and collectibles all on one frame

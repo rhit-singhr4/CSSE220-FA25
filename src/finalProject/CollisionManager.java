@@ -1,7 +1,8 @@
 package finalProject;
 
 /*
- * @Authors: Raj, Andrew, and Braylo The collision class creates the collisions
+ * @Authors: Raj, Andrew, and Braylon
+ * The collision class creates the collisions
  * between everything. This includes player and platform (MileStone 1 what is
  * currently present). Then will later include a collision between the player
  * and enemy, and the player and the collectibles. This collision class allows
@@ -10,6 +11,7 @@ package finalProject;
 
 public class CollisionManager {
 	
+	// all the components that has a collision
 	private HUD hud;
 	private Player player;
 	private PlatformManager platforms;
@@ -17,6 +19,7 @@ public class CollisionManager {
 	private CollectiblesManager collectibles;
 	private RockManager rocks;
 	
+	// Addjustes the hitbox of the sprites
 	private int shrink = 10;
 
 	public CollisionManager(HUD hud, Player player, PlatformManager platforms, EnemyManager enemies, CollectiblesManager collectibles, RockManager rocks) {
@@ -33,6 +36,7 @@ public class CollisionManager {
 	}
 
 	public void playerToPlatformsCollision() {
+		// Platform collision so the player can stand on top of the platforms
 		for (Platform platform : platforms.getPlatforms()) {
 			if (checkCollision(player.getX(), player.getY(), player.getSpriteWidth(), player.getSpriteHeight(),
 					platform.getX(), platform.getY(), platform.getWidth(), platform.getHeight()))
@@ -57,6 +61,7 @@ public class CollisionManager {
 	}
 
 	public void playerToEnemyCollision() {
+		// Creates the player and enemy collision where the player loses a life and respawns
 		for (Enemy enemy : enemies.getEnemies()) {
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, enemy.getX() + shrink, enemy.getY() + shrink,
@@ -69,6 +74,7 @@ public class CollisionManager {
 	}
 
 	public void playerToCollectibles() {
+		// Creates the collisions between the player and collectibles that adds to the score
 		for (int i = collectibles.getCollectibles().size() - 1; i >= 0; i--) {
 			Collectible collectible = collectibles.getCollectibles().get(i);
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
@@ -82,6 +88,7 @@ public class CollisionManager {
 	}
 	
 	public void rockToEnemyCollision() {
+		// Creates the collisions between the nemies and rocks that despawns the enemy when the rock touches them
 		for(int i = rocks.getRocks().size() - 1; i >= 0; i--) {
 			Rock rock = rocks.getRocks().get(i);
 			for(int j = enemies.getEnemies().size() - 1; j >= 0; j--) {
