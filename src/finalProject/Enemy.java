@@ -1,5 +1,4 @@
 package finalProject;
-
 /*
  * @Authors: Raj, Andrew, and Braylo
  * The Enemy class sets up the speed variable for the enemy determining what direction the enemy should move
@@ -12,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public class Enemy {
-	// Enemy variables
+
 	private Image enemy;
 	private int x;
 	private int y;
@@ -23,7 +22,6 @@ public class Enemy {
 	private static final int SPRITE_HEIGHT = 35;
 	
 	public Enemy(int x, int y, Image enemy, Platform platform) {
-		// Sets the inital position of the enemies and spawns them according to where a platform is
 		this.x = x;
 		this.y = y;
 		this.platform = platform;
@@ -31,7 +29,6 @@ public class Enemy {
 		this.facingLeft = false;
 	}
 	
-	// Draws the enemies and gathers all of the sprites components to properly size the enemy
 	public void draw(Graphics g) {
 		g.drawImage(enemy, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 	}

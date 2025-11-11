@@ -10,20 +10,28 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public class Collectible {
-	// Varianles to set the size of the collectibles
+
 	private static final int SPRITE_WIDTH = 40;
 	private static final int SPRITE_HEIGHT = 40;
 	private int x, y;
+	private int pointValue;
 	private Image collectibleimage;
 
-	// Creates one collectible
-	public Collectible(int x, int y, Image collectible, Platform platform) {
+	public Collectible(int x, int y, Image collectible, Platform platform, int pointValue) {
 		this.x = x;
 		this.y = y;
 		this.collectibleimage = collectible;
+		this.pointValue = pointValue;
 	}
 
-	// Draws the collectible and gathers all the values for sizing
+	public int getPointValue() {
+		return pointValue;
+	}
+
+	public void setPointValue(int pointValue) {
+		this.pointValue = pointValue;
+	}
+
 	public void draw(Graphics g) {
 		g.drawImage(collectibleimage, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 	}

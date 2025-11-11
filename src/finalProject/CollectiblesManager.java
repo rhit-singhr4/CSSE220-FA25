@@ -13,23 +13,22 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CollectiblesManager {
-	// Creates an array list for collectibles to create multiple of the one drawn
+
 	private ArrayList<Collectible> collectibles = new ArrayList<>();
 	private static final int SPRITE_WIDTH = 35;
 	private static final int SPRITE_HEIGHT = 35;
 	private static final int GOLD_COIN_POINTS = 2;
 	private static final int SILV_COIN_POINTS = 4;
+	private int pointValue;
 	private Image currentImage;
 	
 	private SpriteManager sprite = new SpriteManager();
-	// loads the two collectibles
+
 	public CollectiblesManager() {
 		sprite.loadGoldCoins();
 		sprite.loadSilverCoins();
 	}
 
-	// creates multiple and sets the locations that are attach to the position of the platforms. Also spawns 
-	// a certain number of collectibles depending on the length of the platform
 	public void addCollectibles(Platform platform) {
 		Random random = new Random();
 		int spacing = 50;
@@ -38,13 +37,15 @@ public class CollectiblesManager {
 			int chanceOfSilver = random.nextInt(6) + 1;
 			if(chanceOfSilver == 2) {
 				currentImage = sprite.collectibleSilverImage();
+				pointValue = SILV_COIN_POINTS;
 			} else {
 				currentImage = sprite.collectibleGoldImage();
+				pointValue = GOLD_COIN_POINTS;
 			}
 			int collectibleX = platform.getX() + 5;
 			int collectibleY = platform.getY() - SPRITE_HEIGHT;
 			if(collectibleX + SPRITE_WIDTH <= platform.getX() + platform.getWidth()) {
-				collectibles.add(new Collectible(collectibleX + spacing * i, collectibleY, currentImage, platform));
+				collectibles.add(new Collectible(collectibleX + spacing * i, collectibleY, currentImage, platform, pointValue));
 			}
 		}
 	}
