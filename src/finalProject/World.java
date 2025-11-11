@@ -12,7 +12,7 @@ public class World {
 	private final RockManager rocks = new RockManager();
 	private final PlatformManager platforms = new PlatformManager();
 	private final Player player = new Player();
-	private final LevelManager levels = new LevelManager(platforms);
+	private final LevelManager levels = new LevelManager(platforms, player);
 	private final Inputs inputs = new Inputs(player, rocks);
 	private final SpriteManager sprite = new SpriteManager();
 	private final CollisionManager collisions = new CollisionManager(hud, player, platforms, enemies, collectibles,
@@ -21,10 +21,6 @@ public class World {
 	public World() {
 		sprite.loadBackground();
 		loadLevel(currentLevel);
-		for (Platform platform : platforms.getPlatforms()) {
-			enemies.addEnemies(platform, 3);
-			collectibles.addCollectibles(platform);
-		}
 	}
 	public Inputs getInputs() {
 		return inputs;
@@ -36,18 +32,16 @@ public class World {
 		rocks.update(width);
 		hud.setRocks(rocks.getCurrentRocks());
 		collisions.playerToPlatformsCollision();
-		collisions.playerToEnemyCollision();
+//		collisions.playerToEnemyCollision();
 		collisions.playerToCollectibles();
 		collisions.rockToEnemyCollision();
 		player.updatePlayerSprite();
 		enemies.update();
 		
-		int currentScore = hud.getScore();
-		if(currentScore >= 76 && currentLevel == 1) {
+		if(collectibles.getCollectibles().isEmpty() && currentLevel == 1) {
 			currentLevel = 2;
 			loadLevel(currentLevel);
 		}
-		
 		int over = hud.getLives();
 		if (over == 0) {
 			sprite.loadloserImage();

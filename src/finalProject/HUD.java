@@ -9,6 +9,7 @@ public class HUD {
 	private int score = 0;
 	private int lives = 3;
 	private int rocks = 100;
+	private int coinsRemaning = 0;
 	
 	public int getScore() {
 		return score;
@@ -30,6 +31,10 @@ public class HUD {
 	
 	public int getRocks() {
 		return rocks;
+	}
+	
+	public void setCoinsRemaning(int coinsRemaning) {
+		this.coinsRemaning = coinsRemaning;
 	}
 
 	public void setRocks(int rocks) {

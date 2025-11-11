@@ -14,12 +14,22 @@ public class Collectible {
 	private static final int SPRITE_WIDTH = 40;
 	private static final int SPRITE_HEIGHT = 40;
 	private int x, y;
+	private int pointValue;
 	private Image collectibleimage;
 
-	public Collectible(int x, int y, Image collectible, Platform platform) {
+	public Collectible(int x, int y, Image collectible, Platform platform, int pointValue) {
 		this.x = x;
 		this.y = y;
 		this.collectibleimage = collectible;
+		this.pointValue = pointValue;
+	}
+
+	public int getPointValue() {
+		return pointValue;
+	}
+
+	public void setPointValue(int pointValue) {
+		this.pointValue = pointValue;
 	}
 
 	public void draw(Graphics g) {

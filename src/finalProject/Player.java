@@ -17,6 +17,9 @@ public class Player{
 	private int x = 50;
 	private int y = 840;
 	
+	private int spawnX = 50;
+	private int spawnY = 840;
+	
 	private static final int SPEED = 5;
 	private static final double GRAVITY = 0.5;
 	private static final int JUMP_POWER = -12;
@@ -84,8 +87,16 @@ public class Player{
 		facingLeft = false;
 	}
 	public void respawnPlayer() {
-		this.x = 50;
-		this.y = 840;
+		x = spawnX;
+		y = spawnY;
+	}
+	
+	public void setSpawn(int x, int y) {
+		this.x = x;
+		this.y = y;
+		spawnX = x;
+		spawnY = y;
+		
 	}
 
 	public int getX() {

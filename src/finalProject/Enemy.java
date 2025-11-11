@@ -16,6 +16,7 @@ public class Enemy {
 	private Image enemy;
 	private int x;
 	private int y;
+	private int health = 2;
 	private Platform platform;;
 	private boolean facingLeft = false;
 	private static final int SPRITE_WIDTH = 35;
@@ -32,6 +33,14 @@ public class Enemy {
 	public void draw(Graphics g) {
 		g.drawImage(enemy, x, y, SPRITE_WIDTH, SPRITE_HEIGHT, null);
 	}
+	
+	public void takeDamadge(int damage) {
+		health -= damage;
+	}
+	
+	public boolean isDead() {
+		return health <= 0;
+	}
 
 	public int getSpriteWidth() {
 		return SPRITE_WIDTH;
@@ -39,6 +48,10 @@ public class Enemy {
 
 	public int getSpriteHeight() {
 		return SPRITE_HEIGHT;
+	}
+	
+	public int getHealth() {
+		return health;
 	}
 
 	public int getX() {

@@ -74,7 +74,7 @@ public class CollisionManager {
 			if (checkCollision(player.getX() + shrink, player.getY() + shrink, player.getSpriteWidth() - shrink,
 					player.getSpriteHeight() - shrink, collectible.getX() + shrink, collectible.getY() + shrink,
 					collectible.getSpriteWidth() - shrink, collectible.getSpriteHeight() - shrink)) {
-				hud.setScore(hud.getScore() + 1);
+				hud.setScore(hud.getScore() + collectible.getPointValue());
 				collectibles.getCollectibles().remove(i);
 			}
 
@@ -90,7 +90,10 @@ public class CollisionManager {
 						rock.getSpriteHeight() - shrink, enemy.getX(), enemy.getY(),
 						enemy.getSpriteWidth(), enemy.getSpriteHeight())) {
 					rocks.getRocks().remove(i);
-					enemies.getEnemies().remove(j);
+					enemy.takeDamadge(1);
+					if(enemy.isDead()) {
+						enemies.getEnemies().remove(j);
+					}
 					break;
 				}
 			}
