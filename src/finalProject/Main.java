@@ -2,7 +2,7 @@ package finalProject;
 
 /*
  * @Authors: Raj, Andrew, and Braylon
- * Calls the game class to run the game
+ * Calls the game class to run the game.
  */
 
 import javax.swing.SwingUtilities;
